@@ -34,6 +34,11 @@ class RoleDefinition extends Entity implements Parsable
     private ?array $rolePermissions = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new roleDefinition and sets the default values.
     */
     public function __construct() {
@@ -84,6 +89,7 @@ class RoleDefinition extends Entity implements Parsable
             'isBuiltIn' => function (ParseNode $n) use ($o) { $o->setIsBuiltIn($n->getBooleanValue()); },
             'roleAssignments' => function (ParseNode $n) use ($o) { $o->setRoleAssignments($n->getCollectionOfObjectValues(array(RoleAssignment::class, 'createFromDiscriminatorValue'))); },
             'rolePermissions' => function (ParseNode $n) use ($o) { $o->setRolePermissions($n->getCollectionOfObjectValues(array(RolePermission::class, 'createFromDiscriminatorValue'))); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ]);
     }
 
@@ -93,6 +99,14 @@ class RoleDefinition extends Entity implements Parsable
     */
     public function getIsBuiltIn(): ?bool {
         return $this->isBuiltIn;
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -122,6 +136,7 @@ class RoleDefinition extends Entity implements Parsable
         $writer->writeBooleanValue('isBuiltIn', $this->isBuiltIn);
         $writer->writeCollectionOfObjectValues('roleAssignments', $this->roleAssignments);
         $writer->writeCollectionOfObjectValues('rolePermissions', $this->rolePermissions);
+        $writer->writeStringValue('@odata.type', $this->type);
     }
 
     /**
@@ -146,6 +161,14 @@ class RoleDefinition extends Entity implements Parsable
     */
     public function setIsBuiltIn(?bool $value ): void {
         $this->isBuiltIn = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

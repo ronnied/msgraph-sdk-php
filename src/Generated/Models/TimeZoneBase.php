@@ -20,6 +20,11 @@ class TimeZoneBase implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new timeZoneBase and sets the default values.
     */
     public function __construct() {
@@ -32,6 +37,13 @@ class TimeZoneBase implements AdditionalDataHolder, Parsable
      * @return TimeZoneBase
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): TimeZoneBase {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.customTimeZone': return new CustomTimeZone();
+            }
+        }
         return new TimeZoneBase();
     }
 
@@ -51,6 +63,7 @@ class TimeZoneBase implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'name' => function (ParseNode $n) use ($o) { $o->setName($n->getStringValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
     }
 
@@ -63,11 +76,20 @@ class TimeZoneBase implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('name', $this->name);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -85,6 +107,14 @@ class TimeZoneBase implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value ): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
 }

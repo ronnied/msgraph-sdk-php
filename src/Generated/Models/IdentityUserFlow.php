@@ -9,6 +9,11 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class IdentityUserFlow extends Entity implements Parsable 
 {
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * @var UserFlowType|null $userFlowType The userFlowType property
     */
     private ?UserFlowType $userFlowType = null;
@@ -19,7 +24,7 @@ class IdentityUserFlow extends Entity implements Parsable
     private ?float $userFlowTypeVersion = null;
     
     /**
-     * Instantiates a new identityUserFlow and sets the default values.
+     * Instantiates a new IdentityUserFlow and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -48,9 +53,18 @@ class IdentityUserFlow extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
             'userFlowType' => function (ParseNode $n) use ($o) { $o->setUserFlowType($n->getEnumValue(UserFlowType::class)); },
             'userFlowTypeVersion' => function (ParseNode $n) use ($o) { $o->setUserFlowTypeVersion($n->getFloatValue()); },
         ]);
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -75,8 +89,17 @@ class IdentityUserFlow extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeEnumValue('userFlowType', $this->userFlowType);
         $writer->writeFloatValue('userFlowTypeVersion', $this->userFlowTypeVersion);
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

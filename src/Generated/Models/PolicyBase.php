@@ -19,6 +19,11 @@ class PolicyBase extends DirectoryObject implements Parsable
     private ?string $displayName = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new policyBase and sets the default values.
     */
     public function __construct() {
@@ -36,6 +41,7 @@ class PolicyBase extends DirectoryObject implements Parsable
             $mappingValue = $mappingValueNode->getStringValue();
             switch ($mappingValue) {
                 case '#microsoft.graph.authorizationPolicy': return new AuthorizationPolicy();
+                case '#microsoft.graph.crossTenantAccessPolicy': return new CrossTenantAccessPolicy();
                 case '#microsoft.graph.identitySecurityDefaultsEnforcementPolicy': return new IdentitySecurityDefaultsEnforcementPolicy();
                 case '#microsoft.graph.permissionGrantPolicy': return new PermissionGrantPolicy();
                 case '#microsoft.graph.stsPolicy': return new StsPolicy();
@@ -69,7 +75,16 @@ class PolicyBase extends DirectoryObject implements Parsable
         return array_merge(parent::getFieldDeserializers(), [
             'description' => function (ParseNode $n) use ($o) { $o->setDescription($n->getStringValue()); },
             'displayName' => function (ParseNode $n) use ($o) { $o->setDisplayName($n->getStringValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ]);
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -80,6 +95,7 @@ class PolicyBase extends DirectoryObject implements Parsable
         parent::serialize($writer);
         $writer->writeStringValue('description', $this->description);
         $writer->writeStringValue('displayName', $this->displayName);
+        $writer->writeStringValue('@odata.type', $this->type);
     }
 
     /**
@@ -96,6 +112,14 @@ class PolicyBase extends DirectoryObject implements Parsable
     */
     public function setDisplayName(?string $value ): void {
         $this->displayName = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
 }

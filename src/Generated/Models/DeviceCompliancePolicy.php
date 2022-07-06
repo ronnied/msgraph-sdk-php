@@ -55,6 +55,11 @@ class DeviceCompliancePolicy extends Entity implements Parsable
     private ?array $scheduledActionsForRule = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * @var array<DeviceComplianceUserStatus>|null $userStatuses List of DeviceComplianceUserStatus.
     */
     private ?array $userStatuses = null;
@@ -171,6 +176,7 @@ class DeviceCompliancePolicy extends Entity implements Parsable
             'displayName' => function (ParseNode $n) use ($o) { $o->setDisplayName($n->getStringValue()); },
             'lastModifiedDateTime' => function (ParseNode $n) use ($o) { $o->setLastModifiedDateTime($n->getDateTimeValue()); },
             'scheduledActionsForRule' => function (ParseNode $n) use ($o) { $o->setScheduledActionsForRule($n->getCollectionOfObjectValues(array(DeviceComplianceScheduledActionForRule::class, 'createFromDiscriminatorValue'))); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
             'userStatuses' => function (ParseNode $n) use ($o) { $o->setUserStatuses($n->getCollectionOfObjectValues(array(DeviceComplianceUserStatus::class, 'createFromDiscriminatorValue'))); },
             'userStatusOverview' => function (ParseNode $n) use ($o) { $o->setUserStatusOverview($n->getObjectValue(array(DeviceComplianceUserOverview::class, 'createFromDiscriminatorValue'))); },
             'version' => function (ParseNode $n) use ($o) { $o->setVersion($n->getIntegerValue()); },
@@ -183,6 +189,14 @@ class DeviceCompliancePolicy extends Entity implements Parsable
     */
     public function getLastModifiedDateTime(): ?DateTime {
         return $this->lastModifiedDateTime;
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -232,6 +246,7 @@ class DeviceCompliancePolicy extends Entity implements Parsable
         $writer->writeStringValue('displayName', $this->displayName);
         $writer->writeDateTimeValue('lastModifiedDateTime', $this->lastModifiedDateTime);
         $writer->writeCollectionOfObjectValues('scheduledActionsForRule', $this->scheduledActionsForRule);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeCollectionOfObjectValues('userStatuses', $this->userStatuses);
         $writer->writeObjectValue('userStatusOverview', $this->userStatusOverview);
         $writer->writeIntegerValue('version', $this->version);
@@ -299,6 +314,14 @@ class DeviceCompliancePolicy extends Entity implements Parsable
     */
     public function setLastModifiedDateTime(?DateTime $value ): void {
         $this->lastModifiedDateTime = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

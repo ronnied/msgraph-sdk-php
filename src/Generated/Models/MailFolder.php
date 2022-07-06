@@ -59,6 +59,11 @@ class MailFolder extends Entity implements Parsable
     private ?int $totalItemCount = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * @var int|null $unreadItemCount The number of items in the mailFolder marked as unread.
     */
     private ?int $unreadItemCount = null;
@@ -127,6 +132,7 @@ class MailFolder extends Entity implements Parsable
             'parentFolderId' => function (ParseNode $n) use ($o) { $o->setParentFolderId($n->getStringValue()); },
             'singleValueExtendedProperties' => function (ParseNode $n) use ($o) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(array(SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))); },
             'totalItemCount' => function (ParseNode $n) use ($o) { $o->setTotalItemCount($n->getIntegerValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
             'unreadItemCount' => function (ParseNode $n) use ($o) { $o->setUnreadItemCount($n->getIntegerValue()); },
         ]);
     }
@@ -161,6 +167,14 @@ class MailFolder extends Entity implements Parsable
     */
     public function getMultiValueExtendedProperties(): ?array {
         return $this->multiValueExtendedProperties;
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -211,6 +225,7 @@ class MailFolder extends Entity implements Parsable
         $writer->writeStringValue('parentFolderId', $this->parentFolderId);
         $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->singleValueExtendedProperties);
         $writer->writeIntegerValue('totalItemCount', $this->totalItemCount);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeIntegerValue('unreadItemCount', $this->unreadItemCount);
     }
 
@@ -268,6 +283,14 @@ class MailFolder extends Entity implements Parsable
     */
     public function setMultiValueExtendedProperties(?array $value ): void {
         $this->multiValueExtendedProperties = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

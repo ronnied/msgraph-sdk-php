@@ -121,6 +121,11 @@ class TeleconferenceDeviceMediaQuality implements AdditionalDataHolder, Parsable
     private ?int $remotePort = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new teleconferenceDeviceMediaQuality and sets the default values.
     */
     public function __construct() {
@@ -133,6 +138,14 @@ class TeleconferenceDeviceMediaQuality implements AdditionalDataHolder, Parsable
      * @return TeleconferenceDeviceMediaQuality
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): TeleconferenceDeviceMediaQuality {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.teleconferenceDeviceAudioQuality': return new TeleconferenceDeviceAudioQuality();
+                case '#microsoft.graph.teleconferenceDeviceVideoQuality': return new TeleconferenceDeviceVideoQuality();
+            }
+        }
         return new TeleconferenceDeviceMediaQuality();
     }
 
@@ -228,6 +241,7 @@ class TeleconferenceDeviceMediaQuality implements AdditionalDataHolder, Parsable
             'outboundPackets' => function (ParseNode $n) use ($o) { $o->setOutboundPackets($n->getIntegerValue()); },
             'remoteIPAddress' => function (ParseNode $n) use ($o) { $o->setRemoteIPAddress($n->getStringValue()); },
             'remotePort' => function (ParseNode $n) use ($o) { $o->setRemotePort($n->getIntegerValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
     }
 
@@ -320,6 +334,14 @@ class TeleconferenceDeviceMediaQuality implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
+    }
+
+    /**
      * Gets the outboundPackets property value. The total number of the outbound packets.
      * @return int|null
     */
@@ -369,6 +391,7 @@ class TeleconferenceDeviceMediaQuality implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('outboundPackets', $this->outboundPackets);
         $writer->writeStringValue('remoteIPAddress', $this->remoteIPAddress);
         $writer->writeIntegerValue('remotePort', $this->remotePort);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -522,6 +545,14 @@ class TeleconferenceDeviceMediaQuality implements AdditionalDataHolder, Parsable
     */
     public function setNetworkLinkSpeedInBytes(?int $value ): void {
         $this->networkLinkSpeedInBytes = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

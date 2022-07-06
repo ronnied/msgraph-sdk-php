@@ -11,6 +11,10 @@ use Microsoft\Graph\Generated\Me\Authentication\Methods\Item\AuthenticationMetho
 use Microsoft\Graph\Generated\Me\Authentication\Methods\MethodsRequestBuilder;
 use Microsoft\Graph\Generated\Me\Authentication\MicrosoftAuthenticatorMethods\Item\MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder;
 use Microsoft\Graph\Generated\Me\Authentication\MicrosoftAuthenticatorMethods\MicrosoftAuthenticatorMethodsRequestBuilder;
+use Microsoft\Graph\Generated\Me\Authentication\Operations\Item\LongRunningOperationItemRequestBuilder;
+use Microsoft\Graph\Generated\Me\Authentication\Operations\OperationsRequestBuilder;
+use Microsoft\Graph\Generated\Me\Authentication\PasswordMethods\Item\PasswordAuthenticationMethodItemRequestBuilder;
+use Microsoft\Graph\Generated\Me\Authentication\PasswordMethods\PasswordMethodsRequestBuilder;
 use Microsoft\Graph\Generated\Me\Authentication\TemporaryAccessPassMethods\Item\TemporaryAccessPassAuthenticationMethodItemRequestBuilder;
 use Microsoft\Graph\Generated\Me\Authentication\TemporaryAccessPassMethods\TemporaryAccessPassMethodsRequestBuilder;
 use Microsoft\Graph\Generated\Me\Authentication\WindowsHelloForBusinessMethods\Item\WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder;
@@ -46,6 +50,20 @@ class AuthenticationRequestBuilder
     */
     public function microsoftAuthenticatorMethods(): MicrosoftAuthenticatorMethodsRequestBuilder {
         return new MicrosoftAuthenticatorMethodsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The operations property
+    */
+    public function operations(): OperationsRequestBuilder {
+        return new OperationsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The passwordMethods property
+    */
+    public function passwordMethods(): PasswordMethodsRequestBuilder {
+        return new PasswordMethodsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
@@ -226,6 +244,28 @@ class AuthenticationRequestBuilder
         $urlTplParams = $this->pathParameters;
         $urlTplParams['microsoftAuthenticatorAuthenticationMethod%2Did'] = $id;
         return new MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
+    /**
+     * Gets an item from the Microsoft\Graph\Generated.me.authentication.operations.item collection
+     * @param string $id Unique identifier of the item
+     * @return LongRunningOperationItemRequestBuilder
+    */
+    public function operationsById(string $id): LongRunningOperationItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['longRunningOperation%2Did'] = $id;
+        return new LongRunningOperationItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
+    /**
+     * Gets an item from the Microsoft\Graph\Generated.me.authentication.passwordMethods.item collection
+     * @param string $id Unique identifier of the item
+     * @return PasswordAuthenticationMethodItemRequestBuilder
+    */
+    public function passwordMethodsById(string $id): PasswordAuthenticationMethodItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['passwordAuthenticationMethod%2Did'] = $id;
+        return new PasswordAuthenticationMethodItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**

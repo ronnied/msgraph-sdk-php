@@ -15,6 +15,11 @@ class EventMessageDetail implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new eventMessageDetail and sets the default values.
     */
     public function __construct() {
@@ -27,6 +32,40 @@ class EventMessageDetail implements AdditionalDataHolder, Parsable
      * @return EventMessageDetail
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): EventMessageDetail {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.callEndedEventMessageDetail': return new CallEndedEventMessageDetail();
+                case '#microsoft.graph.callRecordingEventMessageDetail': return new CallRecordingEventMessageDetail();
+                case '#microsoft.graph.callStartedEventMessageDetail': return new CallStartedEventMessageDetail();
+                case '#microsoft.graph.callTranscriptEventMessageDetail': return new CallTranscriptEventMessageDetail();
+                case '#microsoft.graph.channelAddedEventMessageDetail': return new ChannelAddedEventMessageDetail();
+                case '#microsoft.graph.channelDeletedEventMessageDetail': return new ChannelDeletedEventMessageDetail();
+                case '#microsoft.graph.channelDescriptionUpdatedEventMessageDetail': return new ChannelDescriptionUpdatedEventMessageDetail();
+                case '#microsoft.graph.channelRenamedEventMessageDetail': return new ChannelRenamedEventMessageDetail();
+                case '#microsoft.graph.channelSetAsFavoriteByDefaultEventMessageDetail': return new ChannelSetAsFavoriteByDefaultEventMessageDetail();
+                case '#microsoft.graph.channelUnsetAsFavoriteByDefaultEventMessageDetail': return new ChannelUnsetAsFavoriteByDefaultEventMessageDetail();
+                case '#microsoft.graph.chatRenamedEventMessageDetail': return new ChatRenamedEventMessageDetail();
+                case '#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail': return new ConversationMemberRoleUpdatedEventMessageDetail();
+                case '#microsoft.graph.meetingPolicyUpdatedEventMessageDetail': return new MeetingPolicyUpdatedEventMessageDetail();
+                case '#microsoft.graph.membersAddedEventMessageDetail': return new MembersAddedEventMessageDetail();
+                case '#microsoft.graph.membersDeletedEventMessageDetail': return new MembersDeletedEventMessageDetail();
+                case '#microsoft.graph.membersJoinedEventMessageDetail': return new MembersJoinedEventMessageDetail();
+                case '#microsoft.graph.membersLeftEventMessageDetail': return new MembersLeftEventMessageDetail();
+                case '#microsoft.graph.tabUpdatedEventMessageDetail': return new TabUpdatedEventMessageDetail();
+                case '#microsoft.graph.teamArchivedEventMessageDetail': return new TeamArchivedEventMessageDetail();
+                case '#microsoft.graph.teamCreatedEventMessageDetail': return new TeamCreatedEventMessageDetail();
+                case '#microsoft.graph.teamDescriptionUpdatedEventMessageDetail': return new TeamDescriptionUpdatedEventMessageDetail();
+                case '#microsoft.graph.teamJoiningDisabledEventMessageDetail': return new TeamJoiningDisabledEventMessageDetail();
+                case '#microsoft.graph.teamJoiningEnabledEventMessageDetail': return new TeamJoiningEnabledEventMessageDetail();
+                case '#microsoft.graph.teamRenamedEventMessageDetail': return new TeamRenamedEventMessageDetail();
+                case '#microsoft.graph.teamsAppInstalledEventMessageDetail': return new TeamsAppInstalledEventMessageDetail();
+                case '#microsoft.graph.teamsAppRemovedEventMessageDetail': return new TeamsAppRemovedEventMessageDetail();
+                case '#microsoft.graph.teamsAppUpgradedEventMessageDetail': return new TeamsAppUpgradedEventMessageDetail();
+                case '#microsoft.graph.teamUnarchivedEventMessageDetail': return new TeamUnarchivedEventMessageDetail();
+            }
+        }
         return new EventMessageDetail();
     }
 
@@ -45,7 +84,16 @@ class EventMessageDetail implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -53,6 +101,7 @@ class EventMessageDetail implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -62,6 +111,14 @@ class EventMessageDetail implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value ): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
 }

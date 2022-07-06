@@ -85,7 +85,12 @@ class MobileApp extends Entity implements Parsable
     private ?MobileAppPublishingState $publishingState = null;
     
     /**
-     * Instantiates a new mobileApp and sets the default values.
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
+     * Instantiates a new MobileApp and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -184,6 +189,7 @@ class MobileApp extends Entity implements Parsable
             'privacyInformationUrl' => function (ParseNode $n) use ($o) { $o->setPrivacyInformationUrl($n->getStringValue()); },
             'publisher' => function (ParseNode $n) use ($o) { $o->setPublisher($n->getStringValue()); },
             'publishingState' => function (ParseNode $n) use ($o) { $o->setPublishingState($n->getEnumValue(MobileAppPublishingState::class)); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ]);
     }
 
@@ -225,6 +231,14 @@ class MobileApp extends Entity implements Parsable
     */
     public function getNotes(): ?string {
         return $this->notes;
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -280,6 +294,7 @@ class MobileApp extends Entity implements Parsable
         $writer->writeStringValue('privacyInformationUrl', $this->privacyInformationUrl);
         $writer->writeStringValue('publisher', $this->publisher);
         $writer->writeEnumValue('publishingState', $this->publishingState);
+        $writer->writeStringValue('@odata.type', $this->type);
     }
 
     /**
@@ -368,6 +383,14 @@ class MobileApp extends Entity implements Parsable
     */
     public function setNotes(?string $value ): void {
         $this->notes = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

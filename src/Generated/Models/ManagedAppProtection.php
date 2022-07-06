@@ -145,6 +145,11 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     private ?bool $simplePinBlocked = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new ManagedAppProtection and sets the default values.
     */
     public function __construct() {
@@ -266,6 +271,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
             'printBlocked' => function (ParseNode $n) use ($o) { $o->setPrintBlocked($n->getBooleanValue()); },
             'saveAsBlocked' => function (ParseNode $n) use ($o) { $o->setSaveAsBlocked($n->getBooleanValue()); },
             'simplePinBlocked' => function (ParseNode $n) use ($o) { $o->setSimplePinBlocked($n->getBooleanValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ]);
     }
 
@@ -339,6 +345,14 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     */
     public function getMinimumWarningOsVersion(): ?string {
         return $this->minimumWarningOsVersion;
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -454,6 +468,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
         $writer->writeBooleanValue('printBlocked', $this->printBlocked);
         $writer->writeBooleanValue('saveAsBlocked', $this->saveAsBlocked);
         $writer->writeBooleanValue('simplePinBlocked', $this->simplePinBlocked);
+        $writer->writeStringValue('@odata.type', $this->type);
     }
 
     /**
@@ -590,6 +605,14 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     */
     public function setMinimumWarningOsVersion(?string $value ): void {
         $this->minimumWarningOsVersion = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

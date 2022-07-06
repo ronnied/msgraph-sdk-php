@@ -29,6 +29,11 @@ class RoleAssignment extends Entity implements Parsable
     private ?RoleDefinition $roleDefinition = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new roleAssignment and sets the default values.
     */
     public function __construct() {
@@ -78,7 +83,16 @@ class RoleAssignment extends Entity implements Parsable
             'displayName' => function (ParseNode $n) use ($o) { $o->setDisplayName($n->getStringValue()); },
             'resourceScopes' => function (ParseNode $n) use ($o) { $o->setResourceScopes($n->getCollectionOfPrimitiveValues()); },
             'roleDefinition' => function (ParseNode $n) use ($o) { $o->setRoleDefinition($n->getObjectValue(array(RoleDefinition::class, 'createFromDiscriminatorValue'))); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ]);
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -107,6 +121,7 @@ class RoleAssignment extends Entity implements Parsable
         $writer->writeStringValue('displayName', $this->displayName);
         $writer->writeCollectionOfPrimitiveValues('resourceScopes', $this->resourceScopes);
         $writer->writeObjectValue('roleDefinition', $this->roleDefinition);
+        $writer->writeStringValue('@odata.type', $this->type);
     }
 
     /**
@@ -123,6 +138,14 @@ class RoleAssignment extends Entity implements Parsable
     */
     public function setDisplayName(?string $value ): void {
         $this->displayName = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

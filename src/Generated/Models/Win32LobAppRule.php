@@ -20,6 +20,11 @@ class Win32LobAppRule implements AdditionalDataHolder, Parsable
     private ?Win32LobAppRuleType $ruleType = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new win32LobAppRule and sets the default values.
     */
     public function __construct() {
@@ -32,6 +37,16 @@ class Win32LobAppRule implements AdditionalDataHolder, Parsable
      * @return Win32LobAppRule
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): Win32LobAppRule {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.win32LobAppFileSystemRule': return new Win32LobAppFileSystemRule();
+                case '#microsoft.graph.win32LobAppPowerShellScriptRule': return new Win32LobAppPowerShellScriptRule();
+                case '#microsoft.graph.win32LobAppProductCodeRule': return new Win32LobAppProductCodeRule();
+                case '#microsoft.graph.win32LobAppRegistryRule': return new Win32LobAppRegistryRule();
+            }
+        }
         return new Win32LobAppRule();
     }
 
@@ -51,7 +66,16 @@ class Win32LobAppRule implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'ruleType' => function (ParseNode $n) use ($o) { $o->setRuleType($n->getEnumValue(Win32LobAppRuleType::class)); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -68,6 +92,7 @@ class Win32LobAppRule implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('ruleType', $this->ruleType);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -77,6 +102,14 @@ class Win32LobAppRule implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value ): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

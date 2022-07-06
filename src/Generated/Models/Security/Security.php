@@ -1,7 +1,8 @@
 <?php
 
-namespace Microsoft\Graph\Generated\Models;
+namespace Microsoft\Graph\Generated\Models\Security;
 
+use Microsoft\Graph\Generated\Models\Security\CasesRoot;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
@@ -14,6 +15,11 @@ class Security extends Entity implements Parsable
     private ?array $alerts = null;
     
     /**
+     * @var CasesRoot|null $cases The cases property
+    */
+    private ?CasesRoot $cases = null;
+    
+    /**
      * @var array<SecureScoreControlProfile>|null $secureScoreControlProfiles The secureScoreControlProfiles property
     */
     private ?array $secureScoreControlProfiles = null;
@@ -24,7 +30,7 @@ class Security extends Entity implements Parsable
     private ?array $secureScores = null;
     
     /**
-     * Instantiates a new security and sets the default values.
+     * Instantiates a new Security and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -48,6 +54,14 @@ class Security extends Entity implements Parsable
     }
 
     /**
+     * Gets the cases property value. The cases property
+     * @return CasesRoot|null
+    */
+    public function getCases(): ?CasesRoot {
+        return $this->cases;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable>
     */
@@ -55,6 +69,7 @@ class Security extends Entity implements Parsable
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
             'alerts' => function (ParseNode $n) use ($o) { $o->setAlerts($n->getCollectionOfObjectValues(array(Alert::class, 'createFromDiscriminatorValue'))); },
+            'cases' => function (ParseNode $n) use ($o) { $o->setCases($n->getObjectValue(array(CasesRoot::class, 'createFromDiscriminatorValue'))); },
             'secureScoreControlProfiles' => function (ParseNode $n) use ($o) { $o->setSecureScoreControlProfiles($n->getCollectionOfObjectValues(array(SecureScoreControlProfile::class, 'createFromDiscriminatorValue'))); },
             'secureScores' => function (ParseNode $n) use ($o) { $o->setSecureScores($n->getCollectionOfObjectValues(array(SecureScore::class, 'createFromDiscriminatorValue'))); },
         ]);
@@ -83,6 +98,7 @@ class Security extends Entity implements Parsable
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
         $writer->writeCollectionOfObjectValues('alerts', $this->alerts);
+        $writer->writeObjectValue('cases', $this->cases);
         $writer->writeCollectionOfObjectValues('secureScoreControlProfiles', $this->secureScoreControlProfiles);
         $writer->writeCollectionOfObjectValues('secureScores', $this->secureScores);
     }
@@ -93,6 +109,14 @@ class Security extends Entity implements Parsable
     */
     public function setAlerts(?array $value ): void {
         $this->alerts = $value;
+    }
+
+    /**
+     * Sets the cases property value. The cases property
+     *  @param CasesRoot|null $value Value to set for the cases property.
+    */
+    public function setCases(?CasesRoot $value ): void {
+        $this->cases = $value;
     }
 
     /**

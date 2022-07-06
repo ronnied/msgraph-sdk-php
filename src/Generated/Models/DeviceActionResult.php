@@ -36,6 +36,11 @@ class DeviceActionResult implements AdditionalDataHolder, Parsable
     private ?DateTime $startDateTime = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new deviceActionResult and sets the default values.
     */
     public function __construct() {
@@ -48,6 +53,17 @@ class DeviceActionResult implements AdditionalDataHolder, Parsable
      * @return DeviceActionResult
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): DeviceActionResult {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.deleteUserFromSharedAppleDeviceActionResult': return new DeleteUserFromSharedAppleDeviceActionResult();
+                case '#microsoft.graph.locateDeviceActionResult': return new LocateDeviceActionResult();
+                case '#microsoft.graph.remoteLockActionResult': return new RemoteLockActionResult();
+                case '#microsoft.graph.resetPasscodeActionResult': return new ResetPasscodeActionResult();
+                case '#microsoft.graph.windowsDefenderScanActionResult': return new WindowsDefenderScanActionResult();
+            }
+        }
         return new DeviceActionResult();
     }
 
@@ -86,6 +102,7 @@ class DeviceActionResult implements AdditionalDataHolder, Parsable
             'actionState' => function (ParseNode $n) use ($o) { $o->setActionState($n->getEnumValue(ActionState::class)); },
             'lastUpdatedDateTime' => function (ParseNode $n) use ($o) { $o->setLastUpdatedDateTime($n->getDateTimeValue()); },
             'startDateTime' => function (ParseNode $n) use ($o) { $o->setStartDateTime($n->getDateTimeValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
     }
 
@@ -95,6 +112,14 @@ class DeviceActionResult implements AdditionalDataHolder, Parsable
     */
     public function getLastUpdatedDateTime(): ?DateTime {
         return $this->lastUpdatedDateTime;
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -114,6 +139,7 @@ class DeviceActionResult implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('actionState', $this->actionState);
         $writer->writeDateTimeValue('lastUpdatedDateTime', $this->lastUpdatedDateTime);
         $writer->writeDateTimeValue('startDateTime', $this->startDateTime);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -147,6 +173,14 @@ class DeviceActionResult implements AdditionalDataHolder, Parsable
     */
     public function setLastUpdatedDateTime(?DateTime $value ): void {
         $this->lastUpdatedDateTime = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

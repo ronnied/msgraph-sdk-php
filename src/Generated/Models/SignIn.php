@@ -110,6 +110,11 @@ class SignIn extends Entity implements Parsable
     private ?SignInStatus $status = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * @var string|null $userDisplayName The display name of the user. Supports $filter (eq and startsWith operators only).
     */
     private ?string $userDisplayName = null;
@@ -238,6 +243,7 @@ class SignIn extends Entity implements Parsable
             'riskLevelDuringSignIn' => function (ParseNode $n) use ($o) { $o->setRiskLevelDuringSignIn($n->getEnumValue(RiskLevel::class)); },
             'riskState' => function (ParseNode $n) use ($o) { $o->setRiskState($n->getEnumValue(RiskState::class)); },
             'status' => function (ParseNode $n) use ($o) { $o->setStatus($n->getObjectValue(array(SignInStatus::class, 'createFromDiscriminatorValue'))); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
             'userDisplayName' => function (ParseNode $n) use ($o) { $o->setUserDisplayName($n->getStringValue()); },
             'userId' => function (ParseNode $n) use ($o) { $o->setUserId($n->getStringValue()); },
             'userPrincipalName' => function (ParseNode $n) use ($o) { $o->setUserPrincipalName($n->getStringValue()); },
@@ -266,6 +272,14 @@ class SignIn extends Entity implements Parsable
     */
     public function getLocation(): ?SignInLocation {
         return $this->location;
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -390,6 +404,7 @@ class SignIn extends Entity implements Parsable
         $writer->writeEnumValue('riskLevelDuringSignIn', $this->riskLevelDuringSignIn);
         $writer->writeEnumValue('riskState', $this->riskState);
         $writer->writeObjectValue('status', $this->status);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeStringValue('userDisplayName', $this->userDisplayName);
         $writer->writeStringValue('userId', $this->userId);
         $writer->writeStringValue('userPrincipalName', $this->userPrincipalName);
@@ -481,6 +496,14 @@ class SignIn extends Entity implements Parsable
     */
     public function setLocation(?SignInLocation $value ): void {
         $this->location = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

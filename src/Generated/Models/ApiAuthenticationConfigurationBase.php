@@ -15,6 +15,11 @@ class ApiAuthenticationConfigurationBase implements AdditionalDataHolder, Parsab
     private array $additionalData;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new apiAuthenticationConfigurationBase and sets the default values.
     */
     public function __construct() {
@@ -27,6 +32,15 @@ class ApiAuthenticationConfigurationBase implements AdditionalDataHolder, Parsab
      * @return ApiAuthenticationConfigurationBase
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): ApiAuthenticationConfigurationBase {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.basicAuthentication': return new BasicAuthentication();
+                case '#microsoft.graph.clientCertificateAuthentication': return new ClientCertificateAuthentication();
+                case '#microsoft.graph.pkcs12Certificate': return new Pkcs12Certificate();
+            }
+        }
         return new ApiAuthenticationConfigurationBase();
     }
 
@@ -45,7 +59,16 @@ class ApiAuthenticationConfigurationBase implements AdditionalDataHolder, Parsab
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -53,6 +76,7 @@ class ApiAuthenticationConfigurationBase implements AdditionalDataHolder, Parsab
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -62,6 +86,14 @@ class ApiAuthenticationConfigurationBase implements AdditionalDataHolder, Parsab
     */
     public function setAdditionalData(?array $value ): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
 }
