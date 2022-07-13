@@ -70,7 +70,7 @@ class AccessPackageAssignmentPolicy extends Entity implements Parsable
     private ?array $specificAllowedTargets = null;
     
     /**
-     * Instantiates a new accessPackageAssignmentPolicy and sets the default values.
+     * Instantiates a new AccessPackageAssignmentPolicy and sets the default values.
     */
     public function __construct() {
         parent::__construct();

@@ -35,7 +35,7 @@ class RelatedContact implements AdditionalDataHolder, Parsable
     private ?string $mobilePhone = null;
     
     /**
-     * @var ContactRelationship|null $relationship Relationship to the user. Possible values are: parent, relative, aide, doctor, guardian, child, other, unknownFutureValue.
+     * @var ContactRelationship|null $relationship The relationship property
     */
     private ?ContactRelationship $relationship = null;
     
@@ -111,7 +111,7 @@ class RelatedContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the relationship property value. Relationship to the user. Possible values are: parent, relative, aide, doctor, guardian, child, other, unknownFutureValue.
+     * Gets the relationship property value. The relationship property
      * @return ContactRelationship|null
     */
     public function getRelationship(): ?ContactRelationship {
@@ -172,7 +172,7 @@ class RelatedContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the relationship property value. Relationship to the user. Possible values are: parent, relative, aide, doctor, guardian, child, other, unknownFutureValue.
+     * Sets the relationship property value. The relationship property
      *  @param ContactRelationship|null $value Value to set for the relationship property.
     */
     public function setRelationship(?ContactRelationship $value ): void {

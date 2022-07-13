@@ -20,7 +20,7 @@ class ToneInfo implements AdditionalDataHolder, Parsable
     private ?int $sequenceId = null;
     
     /**
-     * @var Tone|null $tone Possible values are: tone0, tone1, tone2, tone3, tone4, tone5, tone6, tone7, tone8, tone9, star, pound, a, b, c, d, flash.
+     * @var Tone|null $tone The tone property
     */
     private ?Tone $tone = null;
     
@@ -69,7 +69,7 @@ class ToneInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tone property value. Possible values are: tone0, tone1, tone2, tone3, tone4, tone5, tone6, tone7, tone8, tone9, star, pound, a, b, c, d, flash.
+     * Gets the tone property value. The tone property
      * @return Tone|null
     */
     public function getTone(): ?Tone {
@@ -103,7 +103,7 @@ class ToneInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tone property value. Possible values are: tone0, tone1, tone2, tone3, tone4, tone5, tone6, tone7, tone8, tone9, star, pound, a, b, c, d, flash.
+     * Sets the tone property value. The tone property
      *  @param Tone|null $value Value to set for the tone property.
     */
     public function setTone(?Tone $value ): void {

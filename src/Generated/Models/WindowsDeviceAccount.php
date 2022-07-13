@@ -20,10 +20,16 @@ class WindowsDeviceAccount implements AdditionalDataHolder, Parsable
     private ?string $password = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new windowsDeviceAccount and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];
+        $this->type = '#microsoft.graph.windowsDeviceAccount';
     }
 
     /**
@@ -32,6 +38,14 @@ class WindowsDeviceAccount implements AdditionalDataHolder, Parsable
      * @return WindowsDeviceAccount
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): WindowsDeviceAccount {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.windowsDeviceADAccount': return new WindowsDeviceADAccount();
+                case '#microsoft.graph.windowsDeviceAzureADAccount': return new WindowsDeviceAzureADAccount();
+            }
+        }
         return new WindowsDeviceAccount();
     }
 
@@ -51,7 +65,16 @@ class WindowsDeviceAccount implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'password' => function (ParseNode $n) use ($o) { $o->setPassword($n->getStringValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -68,6 +91,7 @@ class WindowsDeviceAccount implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('password', $this->password);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -77,6 +101,14 @@ class WindowsDeviceAccount implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value ): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

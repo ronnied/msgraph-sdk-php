@@ -24,6 +24,16 @@ class Authentication extends Entity implements Parsable
     private ?array $microsoftAuthenticatorMethods = null;
     
     /**
+     * @var array<LongRunningOperation>|null $operations The operations property
+    */
+    private ?array $operations = null;
+    
+    /**
+     * @var array<PasswordAuthenticationMethod>|null $passwordMethods Represents the details of the password authentication method registered to a user for authentication.
+    */
+    private ?array $passwordMethods = null;
+    
+    /**
      * @var array<TemporaryAccessPassAuthenticationMethod>|null $temporaryAccessPassMethods Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
     */
     private ?array $temporaryAccessPassMethods = null;
@@ -34,7 +44,7 @@ class Authentication extends Entity implements Parsable
     private ?array $windowsHelloForBusinessMethods = null;
     
     /**
-     * Instantiates a new authentication and sets the default values.
+     * Instantiates a new Authentication and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -67,6 +77,8 @@ class Authentication extends Entity implements Parsable
             'fido2Methods' => function (ParseNode $n) use ($o) { $o->setFido2Methods($n->getCollectionOfObjectValues(array(Fido2AuthenticationMethod::class, 'createFromDiscriminatorValue'))); },
             'methods' => function (ParseNode $n) use ($o) { $o->setMethods($n->getCollectionOfObjectValues(array(AuthenticationMethod::class, 'createFromDiscriminatorValue'))); },
             'microsoftAuthenticatorMethods' => function (ParseNode $n) use ($o) { $o->setMicrosoftAuthenticatorMethods($n->getCollectionOfObjectValues(array(MicrosoftAuthenticatorAuthenticationMethod::class, 'createFromDiscriminatorValue'))); },
+            'operations' => function (ParseNode $n) use ($o) { $o->setOperations($n->getCollectionOfObjectValues(array(LongRunningOperation::class, 'createFromDiscriminatorValue'))); },
+            'passwordMethods' => function (ParseNode $n) use ($o) { $o->setPasswordMethods($n->getCollectionOfObjectValues(array(PasswordAuthenticationMethod::class, 'createFromDiscriminatorValue'))); },
             'temporaryAccessPassMethods' => function (ParseNode $n) use ($o) { $o->setTemporaryAccessPassMethods($n->getCollectionOfObjectValues(array(TemporaryAccessPassAuthenticationMethod::class, 'createFromDiscriminatorValue'))); },
             'windowsHelloForBusinessMethods' => function (ParseNode $n) use ($o) { $o->setWindowsHelloForBusinessMethods($n->getCollectionOfObjectValues(array(WindowsHelloForBusinessAuthenticationMethod::class, 'createFromDiscriminatorValue'))); },
         ]);
@@ -86,6 +98,22 @@ class Authentication extends Entity implements Parsable
     */
     public function getMicrosoftAuthenticatorMethods(): ?array {
         return $this->microsoftAuthenticatorMethods;
+    }
+
+    /**
+     * Gets the operations property value. The operations property
+     * @return array<LongRunningOperation>|null
+    */
+    public function getOperations(): ?array {
+        return $this->operations;
+    }
+
+    /**
+     * Gets the passwordMethods property value. Represents the details of the password authentication method registered to a user for authentication.
+     * @return array<PasswordAuthenticationMethod>|null
+    */
+    public function getPasswordMethods(): ?array {
+        return $this->passwordMethods;
     }
 
     /**
@@ -113,6 +141,8 @@ class Authentication extends Entity implements Parsable
         $writer->writeCollectionOfObjectValues('fido2Methods', $this->fido2Methods);
         $writer->writeCollectionOfObjectValues('methods', $this->methods);
         $writer->writeCollectionOfObjectValues('microsoftAuthenticatorMethods', $this->microsoftAuthenticatorMethods);
+        $writer->writeCollectionOfObjectValues('operations', $this->operations);
+        $writer->writeCollectionOfObjectValues('passwordMethods', $this->passwordMethods);
         $writer->writeCollectionOfObjectValues('temporaryAccessPassMethods', $this->temporaryAccessPassMethods);
         $writer->writeCollectionOfObjectValues('windowsHelloForBusinessMethods', $this->windowsHelloForBusinessMethods);
     }
@@ -139,6 +169,22 @@ class Authentication extends Entity implements Parsable
     */
     public function setMicrosoftAuthenticatorMethods(?array $value ): void {
         $this->microsoftAuthenticatorMethods = $value;
+    }
+
+    /**
+     * Sets the operations property value. The operations property
+     *  @param array<LongRunningOperation>|null $value Value to set for the operations property.
+    */
+    public function setOperations(?array $value ): void {
+        $this->operations = $value;
+    }
+
+    /**
+     * Sets the passwordMethods property value. Represents the details of the password authentication method registered to a user for authentication.
+     *  @param array<PasswordAuthenticationMethod>|null $value Value to set for the passwordMethods property.
+    */
+    public function setPasswordMethods(?array $value ): void {
+        $this->passwordMethods = $value;
     }
 
     /**

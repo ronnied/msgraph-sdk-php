@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class DeviceComplianceActionItem extends Entity implements Parsable 
 {
     /**
-     * @var DeviceComplianceActionType|null $actionType What action to take. Possible values are: noAction, notification, block, retire, wipe, removeResourceAccessProfiles, pushNotification, remoteLock.
+     * @var DeviceComplianceActionType|null $actionType Scheduled Action Type Enum
     */
     private ?DeviceComplianceActionType $actionType = null;
     
@@ -45,7 +45,7 @@ class DeviceComplianceActionItem extends Entity implements Parsable
     }
 
     /**
-     * Gets the actionType property value. What action to take. Possible values are: noAction, notification, block, retire, wipe, removeResourceAccessProfiles, pushNotification, remoteLock.
+     * Gets the actionType property value. Scheduled Action Type Enum
      * @return DeviceComplianceActionType|null
     */
     public function getActionType(): ?DeviceComplianceActionType {
@@ -103,7 +103,7 @@ class DeviceComplianceActionItem extends Entity implements Parsable
     }
 
     /**
-     * Sets the actionType property value. What action to take. Possible values are: noAction, notification, block, retire, wipe, removeResourceAccessProfiles, pushNotification, remoteLock.
+     * Sets the actionType property value. Scheduled Action Type Enum
      *  @param DeviceComplianceActionType|null $value Value to set for the actionType property.
     */
     public function setActionType(?DeviceComplianceActionType $value ): void {

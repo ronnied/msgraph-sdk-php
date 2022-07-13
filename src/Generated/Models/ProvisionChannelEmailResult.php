@@ -20,7 +20,7 @@ class ProvisionChannelEmailResult implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
-     * Instantiates a new ProvisionChannelEmailResult and sets the default values.
+     * Instantiates a new provisionChannelEmailResult and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

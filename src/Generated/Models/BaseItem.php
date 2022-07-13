@@ -65,10 +65,11 @@ class BaseItem extends Entity implements Parsable
     private ?string $webUrl = null;
     
     /**
-     * Instantiates a new baseItem and sets the default values.
+     * Instantiates a new BaseItem and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.baseItem';
     }
 
     /**

@@ -30,10 +30,16 @@ class OmaSetting implements AdditionalDataHolder, Parsable
     private ?string $omaUri = null;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new omaSetting and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];
+        $this->type = '#microsoft.graph.omaSetting';
     }
 
     /**
@@ -42,6 +48,19 @@ class OmaSetting implements AdditionalDataHolder, Parsable
      * @return OmaSetting
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): OmaSetting {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.omaSettingBase64': return new OmaSettingBase64();
+                case '#microsoft.graph.omaSettingBoolean': return new OmaSettingBoolean();
+                case '#microsoft.graph.omaSettingDateTime': return new OmaSettingDateTime();
+                case '#microsoft.graph.omaSettingFloatingPoint': return new OmaSettingFloatingPoint();
+                case '#microsoft.graph.omaSettingInteger': return new OmaSettingInteger();
+                case '#microsoft.graph.omaSettingString': return new OmaSettingString();
+                case '#microsoft.graph.omaSettingStringXml': return new OmaSettingStringXml();
+            }
+        }
         return new OmaSetting();
     }
 
@@ -79,7 +98,16 @@ class OmaSetting implements AdditionalDataHolder, Parsable
             'description' => function (ParseNode $n) use ($o) { $o->setDescription($n->getStringValue()); },
             'displayName' => function (ParseNode $n) use ($o) { $o->setDisplayName($n->getStringValue()); },
             'omaUri' => function (ParseNode $n) use ($o) { $o->setOmaUri($n->getStringValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -98,6 +126,7 @@ class OmaSetting implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('description', $this->description);
         $writer->writeStringValue('displayName', $this->displayName);
         $writer->writeStringValue('omaUri', $this->omaUri);
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -123,6 +152,14 @@ class OmaSetting implements AdditionalDataHolder, Parsable
     */
     public function setDisplayName(?string $value ): void {
         $this->displayName = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
     /**

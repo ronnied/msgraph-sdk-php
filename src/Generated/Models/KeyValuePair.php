@@ -15,12 +15,12 @@ class KeyValuePair implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var string|null $name Name for this key-value pair
+     * @var string|null $name Name for this key-value pair. Possible names are: AdditionalWSFedEndpointCheckResult,  AllowedAuthenticationClassReferencesCheckResult, AlwaysRequireAuthenticationCheckResult,   AutoUpdateEnabledCheckResult, ClaimsProviderNameCheckResult, EncryptClaimsCheckResult,  EncryptedNameIdRequiredCheckResult, MonitoringEnabledCheckResult,NotBeforeSkewCheckResult,  RequestMFAFromClaimsProvidersCheckResult, SignedSamlRequestsRequiredCheckResult, AdditionalAuthenticationRulesCheckResult, TokenLifetimeCheckResult,  DelegationAuthorizationRulesCheckResult, IssuanceAuthorizationRulesCheckResult, IssuanceTransformRulesCheckResult.
     */
     private ?string $name = null;
     
     /**
-     * @var string|null $value Value for this key-value pair
+     * @var string|null $value Value for this key-value pair. Possible result values are 0 (when the validation check passed), 1 (when the validation check failed), or 2 (when the validation check is a warning).
     */
     private ?string $value = null;
     
@@ -61,7 +61,7 @@ class KeyValuePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the name property value. Name for this key-value pair
+     * Gets the name property value. Name for this key-value pair. Possible names are: AdditionalWSFedEndpointCheckResult,  AllowedAuthenticationClassReferencesCheckResult, AlwaysRequireAuthenticationCheckResult,   AutoUpdateEnabledCheckResult, ClaimsProviderNameCheckResult, EncryptClaimsCheckResult,  EncryptedNameIdRequiredCheckResult, MonitoringEnabledCheckResult,NotBeforeSkewCheckResult,  RequestMFAFromClaimsProvidersCheckResult, SignedSamlRequestsRequiredCheckResult, AdditionalAuthenticationRulesCheckResult, TokenLifetimeCheckResult,  DelegationAuthorizationRulesCheckResult, IssuanceAuthorizationRulesCheckResult, IssuanceTransformRulesCheckResult.
      * @return string|null
     */
     public function getName(): ?string {
@@ -69,7 +69,7 @@ class KeyValuePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the value property value. Value for this key-value pair
+     * Gets the value property value. Value for this key-value pair. Possible result values are 0 (when the validation check passed), 1 (when the validation check failed), or 2 (when the validation check is a warning).
      * @return string|null
     */
     public function getValue(): ?string {
@@ -95,7 +95,7 @@ class KeyValuePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. Name for this key-value pair
+     * Sets the name property value. Name for this key-value pair. Possible names are: AdditionalWSFedEndpointCheckResult,  AllowedAuthenticationClassReferencesCheckResult, AlwaysRequireAuthenticationCheckResult,   AutoUpdateEnabledCheckResult, ClaimsProviderNameCheckResult, EncryptClaimsCheckResult,  EncryptedNameIdRequiredCheckResult, MonitoringEnabledCheckResult,NotBeforeSkewCheckResult,  RequestMFAFromClaimsProvidersCheckResult, SignedSamlRequestsRequiredCheckResult, AdditionalAuthenticationRulesCheckResult, TokenLifetimeCheckResult,  DelegationAuthorizationRulesCheckResult, IssuanceAuthorizationRulesCheckResult, IssuanceTransformRulesCheckResult.
      *  @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value ): void {
@@ -103,7 +103,7 @@ class KeyValuePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the value property value. Value for this key-value pair
+     * Sets the value property value. Value for this key-value pair. Possible result values are 0 (when the validation check passed), 1 (when the validation check failed), or 2 (when the validation check is a warning).
      *  @param string|null $value Value to set for the value property.
     */
     public function setValue(?string $value ): void {

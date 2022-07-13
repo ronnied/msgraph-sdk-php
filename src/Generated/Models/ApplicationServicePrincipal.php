@@ -25,7 +25,7 @@ class ApplicationServicePrincipal implements AdditionalDataHolder, Parsable
     private ?ServicePrincipal $servicePrincipal = null;
     
     /**
-     * Instantiates a new ApplicationServicePrincipal and sets the default values.
+     * Instantiates a new applicationServicePrincipal and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

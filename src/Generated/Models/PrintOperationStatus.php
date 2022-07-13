@@ -20,7 +20,7 @@ class PrintOperationStatus implements AdditionalDataHolder, Parsable
     private ?string $description = null;
     
     /**
-     * @var PrintOperationProcessingState|null $state The printOperation's current processing state. Valid values are described in the following table. Read-only.
+     * @var PrintOperationProcessingState|null $state The state property
     */
     private ?PrintOperationProcessingState $state = null;
     
@@ -69,7 +69,7 @@ class PrintOperationStatus implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. The printOperation's current processing state. Valid values are described in the following table. Read-only.
+     * Gets the state property value. The state property
      * @return PrintOperationProcessingState|null
     */
     public function getState(): ?PrintOperationProcessingState {
@@ -103,7 +103,7 @@ class PrintOperationStatus implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. The printOperation's current processing state. Valid values are described in the following table. Read-only.
+     * Sets the state property value. The state property
      *  @param PrintOperationProcessingState|null $value Value to set for the state property.
     */
     public function setState(?PrintOperationProcessingState $value ): void {

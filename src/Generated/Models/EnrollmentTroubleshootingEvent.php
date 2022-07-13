@@ -14,12 +14,12 @@ class EnrollmentTroubleshootingEvent extends DeviceManagementTroubleshootingEven
     private ?string $deviceId = null;
     
     /**
-     * @var DeviceEnrollmentType|null $enrollmentType Type of the enrollment. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth, appleUserEnrollment, appleUserEnrollmentWithServiceAccount, azureAdJoinUsingAzureVmExtension, androidEnterpriseDedicatedDevice, androidEnterpriseFullyManaged, androidEnterpriseCorporateWorkProfile.
+     * @var DeviceEnrollmentType|null $enrollmentType Possible ways of adding a mobile device to management.
     */
     private ?DeviceEnrollmentType $enrollmentType = null;
     
     /**
-     * @var DeviceEnrollmentFailureReason|null $failureCategory Highlevel failure category. Possible values are: unknown, authentication, authorization, accountValidation, userValidation, deviceNotSupported, inMaintenance, badRequest, featureNotSupported, enrollmentRestrictionsEnforced, clientDisconnected, userAbandonment.
+     * @var DeviceEnrollmentFailureReason|null $failureCategory Top level failure categories for enrollment.
     */
     private ?DeviceEnrollmentFailureReason $failureCategory = null;
     
@@ -73,7 +73,7 @@ class EnrollmentTroubleshootingEvent extends DeviceManagementTroubleshootingEven
     }
 
     /**
-     * Gets the enrollmentType property value. Type of the enrollment. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth, appleUserEnrollment, appleUserEnrollmentWithServiceAccount, azureAdJoinUsingAzureVmExtension, androidEnterpriseDedicatedDevice, androidEnterpriseFullyManaged, androidEnterpriseCorporateWorkProfile.
+     * Gets the enrollmentType property value. Possible ways of adding a mobile device to management.
      * @return DeviceEnrollmentType|null
     */
     public function getEnrollmentType(): ?DeviceEnrollmentType {
@@ -81,7 +81,7 @@ class EnrollmentTroubleshootingEvent extends DeviceManagementTroubleshootingEven
     }
 
     /**
-     * Gets the failureCategory property value. Highlevel failure category. Possible values are: unknown, authentication, authorization, accountValidation, userValidation, deviceNotSupported, inMaintenance, badRequest, featureNotSupported, enrollmentRestrictionsEnforced, clientDisconnected, userAbandonment.
+     * Gets the failureCategory property value. Top level failure categories for enrollment.
      * @return DeviceEnrollmentFailureReason|null
     */
     public function getFailureCategory(): ?DeviceEnrollmentFailureReason {
@@ -171,7 +171,7 @@ class EnrollmentTroubleshootingEvent extends DeviceManagementTroubleshootingEven
     }
 
     /**
-     * Sets the enrollmentType property value. Type of the enrollment. Possible values are: unknown, userEnrollment, deviceEnrollmentManager, appleBulkWithUser, appleBulkWithoutUser, windowsAzureADJoin, windowsBulkUserless, windowsAutoEnrollment, windowsBulkAzureDomainJoin, windowsCoManagement, windowsAzureADJoinUsingDeviceAuth, appleUserEnrollment, appleUserEnrollmentWithServiceAccount, azureAdJoinUsingAzureVmExtension, androidEnterpriseDedicatedDevice, androidEnterpriseFullyManaged, androidEnterpriseCorporateWorkProfile.
+     * Sets the enrollmentType property value. Possible ways of adding a mobile device to management.
      *  @param DeviceEnrollmentType|null $value Value to set for the enrollmentType property.
     */
     public function setEnrollmentType(?DeviceEnrollmentType $value ): void {
@@ -179,7 +179,7 @@ class EnrollmentTroubleshootingEvent extends DeviceManagementTroubleshootingEven
     }
 
     /**
-     * Sets the failureCategory property value. Highlevel failure category. Possible values are: unknown, authentication, authorization, accountValidation, userValidation, deviceNotSupported, inMaintenance, badRequest, featureNotSupported, enrollmentRestrictionsEnforced, clientDisconnected, userAbandonment.
+     * Sets the failureCategory property value. Top level failure categories for enrollment.
      *  @param DeviceEnrollmentFailureReason|null $value Value to set for the failureCategory property.
     */
     public function setFailureCategory(?DeviceEnrollmentFailureReason $value ): void {

@@ -16,7 +16,7 @@ class SyncPostRequestBody implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var DeviceManagementExchangeConnectorSyncType|null $syncType The syncType property
+     * @var DeviceManagementExchangeConnectorSyncType|null $syncType The type of Exchange Connector sync requested.
     */
     private ?DeviceManagementExchangeConnectorSyncType $syncType = null;
     
@@ -56,7 +56,7 @@ class SyncPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the syncType property value. The syncType property
+     * Gets the syncType property value. The type of Exchange Connector sync requested.
      * @return DeviceManagementExchangeConnectorSyncType|null
     */
     public function getSyncType(): ?DeviceManagementExchangeConnectorSyncType {
@@ -81,7 +81,7 @@ class SyncPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the syncType property value. The syncType property
+     * Sets the syncType property value. The type of Exchange Connector sync requested.
      *  @param DeviceManagementExchangeConnectorSyncType|null $value Value to set for the syncType property.
     */
     public function setSyncType(?DeviceManagementExchangeConnectorSyncType $value ): void {

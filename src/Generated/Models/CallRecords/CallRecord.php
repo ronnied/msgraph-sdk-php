@@ -52,11 +52,6 @@ class CallRecord extends Entity implements Parsable
     private ?DateTime $startDateTime = null;
     
     /**
-     * @var CallType|null $type Indicates the type of the call. Possible values are: unknown, groupCall, peerToPeer, unknownFutureValue.
-    */
-    private ?CallType $type = null;
-    
-    /**
      * @var int|null $version Monotonically increasing version of the call record. Higher version call records with the same ID includes additional data compared to the lower version.
     */
     private ?int $version = null;
@@ -100,7 +95,6 @@ class CallRecord extends Entity implements Parsable
             'participants' => function (ParseNode $n) use ($o) { $o->setParticipants($n->getCollectionOfObjectValues(array(IdentitySet::class, 'createFromDiscriminatorValue'))); },
             'sessions' => function (ParseNode $n) use ($o) { $o->setSessions($n->getCollectionOfObjectValues(array(Session::class, 'createFromDiscriminatorValue'))); },
             'startDateTime' => function (ParseNode $n) use ($o) { $o->setStartDateTime($n->getDateTimeValue()); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getEnumValue(CallType::class)); },
             'version' => function (ParseNode $n) use ($o) { $o->setVersion($n->getIntegerValue()); },
         ]);
     }
@@ -162,14 +156,6 @@ class CallRecord extends Entity implements Parsable
     }
 
     /**
-     * Gets the type property value. Indicates the type of the call. Possible values are: unknown, groupCall, peerToPeer, unknownFutureValue.
-     * @return CallType|null
-    */
-    public function getType(): ?CallType {
-        return $this->type;
-    }
-
-    /**
      * Gets the version property value. Monotonically increasing version of the call record. Higher version call records with the same ID includes additional data compared to the lower version.
      * @return int|null
     */
@@ -191,7 +177,6 @@ class CallRecord extends Entity implements Parsable
         $writer->writeCollectionOfObjectValues('participants', $this->participants);
         $writer->writeCollectionOfObjectValues('sessions', $this->sessions);
         $writer->writeDateTimeValue('startDateTime', $this->startDateTime);
-        $writer->writeEnumValue('type', $this->type);
         $writer->writeIntegerValue('version', $this->version);
     }
 
@@ -257,14 +242,6 @@ class CallRecord extends Entity implements Parsable
     */
     public function setStartDateTime(?DateTime $value ): void {
         $this->startDateTime = $value;
-    }
-
-    /**
-     * Sets the type property value. Indicates the type of the call. Possible values are: unknown, groupCall, peerToPeer, unknownFutureValue.
-     *  @param CallType|null $value Value to set for the type property.
-    */
-    public function setType(?CallType $value ): void {
-        $this->type = $value;
     }
 
     /**

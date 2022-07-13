@@ -15,12 +15,12 @@ class MediaContentRatingNewZealand implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var RatingNewZealandMoviesType|null $movieRating Movies rating selected for New Zealand. Possible values are: allAllowed, allBlocked, general, parentalGuidance, mature, agesAbove13, agesAbove15, agesAbove16, agesAbove18, restricted, agesAbove16Restricted.
+     * @var RatingNewZealandMoviesType|null $movieRating Movies rating labels in New Zealand
     */
     private ?RatingNewZealandMoviesType $movieRating = null;
     
     /**
-     * @var RatingNewZealandTelevisionType|null $tvRating TV rating selected for New Zealand. Possible values are: allAllowed, allBlocked, general, parentalGuidance, adults.
+     * @var RatingNewZealandTelevisionType|null $tvRating TV content rating labels in New Zealand
     */
     private ?RatingNewZealandTelevisionType $tvRating = null;
     
@@ -61,7 +61,7 @@ class MediaContentRatingNewZealand implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the movieRating property value. Movies rating selected for New Zealand. Possible values are: allAllowed, allBlocked, general, parentalGuidance, mature, agesAbove13, agesAbove15, agesAbove16, agesAbove18, restricted, agesAbove16Restricted.
+     * Gets the movieRating property value. Movies rating labels in New Zealand
      * @return RatingNewZealandMoviesType|null
     */
     public function getMovieRating(): ?RatingNewZealandMoviesType {
@@ -69,7 +69,7 @@ class MediaContentRatingNewZealand implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tvRating property value. TV rating selected for New Zealand. Possible values are: allAllowed, allBlocked, general, parentalGuidance, adults.
+     * Gets the tvRating property value. TV content rating labels in New Zealand
      * @return RatingNewZealandTelevisionType|null
     */
     public function getTvRating(): ?RatingNewZealandTelevisionType {
@@ -95,7 +95,7 @@ class MediaContentRatingNewZealand implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the movieRating property value. Movies rating selected for New Zealand. Possible values are: allAllowed, allBlocked, general, parentalGuidance, mature, agesAbove13, agesAbove15, agesAbove16, agesAbove18, restricted, agesAbove16Restricted.
+     * Sets the movieRating property value. Movies rating labels in New Zealand
      *  @param RatingNewZealandMoviesType|null $value Value to set for the movieRating property.
     */
     public function setMovieRating(?RatingNewZealandMoviesType $value ): void {
@@ -103,7 +103,7 @@ class MediaContentRatingNewZealand implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tvRating property value. TV rating selected for New Zealand. Possible values are: allAllowed, allBlocked, general, parentalGuidance, adults.
+     * Sets the tvRating property value. TV content rating labels in New Zealand
      *  @param RatingNewZealandTelevisionType|null $value Value to set for the tvRating property.
     */
     public function setTvRating(?RatingNewZealandTelevisionType $value ): void {

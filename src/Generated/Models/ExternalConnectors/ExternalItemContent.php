@@ -15,7 +15,7 @@ class ExternalItemContent implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var ExternalItemContentType|null $type The type of content in the value property. Possible values are text and html. These are the content types that the indexer supports, and not the file extension types allowed. Required.
+     * @var ExternalItemContentType|null $type The type property
     */
     private ?ExternalItemContentType $type = null;
     
@@ -61,7 +61,7 @@ class ExternalItemContent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. The type of content in the value property. Possible values are text and html. These are the content types that the indexer supports, and not the file extension types allowed. Required.
+     * Gets the type property value. The type property
      * @return ExternalItemContentType|null
     */
     public function getType(): ?ExternalItemContentType {
@@ -95,7 +95,7 @@ class ExternalItemContent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. The type of content in the value property. Possible values are text and html. These are the content types that the indexer supports, and not the file extension types allowed. Required.
+     * Sets the type property value. The type property
      *  @param ExternalItemContentType|null $value Value to set for the type property.
     */
     public function setType(?ExternalItemContentType $value ): void {

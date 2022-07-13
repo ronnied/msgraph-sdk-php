@@ -15,12 +15,12 @@ class MediaContentRatingJapan implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var RatingJapanMoviesType|null $movieRating Movies rating selected for Japan. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove15, agesAbove18.
+     * @var RatingJapanMoviesType|null $movieRating Movies rating labels in Japan
     */
     private ?RatingJapanMoviesType $movieRating = null;
     
     /**
-     * @var RatingJapanTelevisionType|null $tvRating TV rating selected for Japan. Possible values are: allAllowed, allBlocked, explicitAllowed.
+     * @var RatingJapanTelevisionType|null $tvRating TV content rating labels in Japan
     */
     private ?RatingJapanTelevisionType $tvRating = null;
     
@@ -61,7 +61,7 @@ class MediaContentRatingJapan implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the movieRating property value. Movies rating selected for Japan. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove15, agesAbove18.
+     * Gets the movieRating property value. Movies rating labels in Japan
      * @return RatingJapanMoviesType|null
     */
     public function getMovieRating(): ?RatingJapanMoviesType {
@@ -69,7 +69,7 @@ class MediaContentRatingJapan implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tvRating property value. TV rating selected for Japan. Possible values are: allAllowed, allBlocked, explicitAllowed.
+     * Gets the tvRating property value. TV content rating labels in Japan
      * @return RatingJapanTelevisionType|null
     */
     public function getTvRating(): ?RatingJapanTelevisionType {
@@ -95,7 +95,7 @@ class MediaContentRatingJapan implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the movieRating property value. Movies rating selected for Japan. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove15, agesAbove18.
+     * Sets the movieRating property value. Movies rating labels in Japan
      *  @param RatingJapanMoviesType|null $value Value to set for the movieRating property.
     */
     public function setMovieRating(?RatingJapanMoviesType $value ): void {
@@ -103,7 +103,7 @@ class MediaContentRatingJapan implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tvRating property value. TV rating selected for Japan. Possible values are: allAllowed, allBlocked, explicitAllowed.
+     * Sets the tvRating property value. TV content rating labels in Japan
      *  @param RatingJapanTelevisionType|null $value Value to set for the tvRating property.
     */
     public function setTvRating(?RatingJapanTelevisionType $value ): void {

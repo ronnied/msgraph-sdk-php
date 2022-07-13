@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class OnenotePatchContentCommand implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var OnenotePatchActionType|null $action The action to perform on the target element. Possible values are: replace, append, delete, insert, or prepend.
+     * @var OnenotePatchActionType|null $action The action property
     */
     private ?OnenotePatchActionType $action = null;
     
@@ -51,7 +51,7 @@ class OnenotePatchContentCommand implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the action property value. The action to perform on the target element. Possible values are: replace, append, delete, insert, or prepend.
+     * Gets the action property value. The action property
      * @return OnenotePatchActionType|null
     */
     public function getAction(): ?OnenotePatchActionType {
@@ -117,7 +117,7 @@ class OnenotePatchContentCommand implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the action property value. The action to perform on the target element. Possible values are: replace, append, delete, insert, or prepend.
+     * Sets the action property value. The action property
      *  @param OnenotePatchActionType|null $value Value to set for the action property.
     */
     public function setAction(?OnenotePatchActionType $value ): void {

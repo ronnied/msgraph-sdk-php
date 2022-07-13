@@ -20,7 +20,7 @@ class AppConfigurationSettingItem implements AdditionalDataHolder, Parsable
     private ?string $appConfigKey = null;
     
     /**
-     * @var MdmAppConfigKeyType|null $appConfigKeyType app configuration key type. Possible values are: stringType, integerType, realType, booleanType, tokenType.
+     * @var MdmAppConfigKeyType|null $appConfigKeyType App configuration key types.
     */
     private ?MdmAppConfigKeyType $appConfigKeyType = null;
     
@@ -62,7 +62,7 @@ class AppConfigurationSettingItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appConfigKeyType property value. app configuration key type. Possible values are: stringType, integerType, realType, booleanType, tokenType.
+     * Gets the appConfigKeyType property value. App configuration key types.
      * @return MdmAppConfigKeyType|null
     */
     public function getAppConfigKeyType(): ?MdmAppConfigKeyType {
@@ -118,7 +118,7 @@ class AppConfigurationSettingItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appConfigKeyType property value. app configuration key type. Possible values are: stringType, integerType, realType, booleanType, tokenType.
+     * Sets the appConfigKeyType property value. App configuration key types.
      *  @param MdmAppConfigKeyType|null $value Value to set for the appConfigKeyType property.
     */
     public function setAppConfigKeyType(?MdmAppConfigKeyType $value ): void {

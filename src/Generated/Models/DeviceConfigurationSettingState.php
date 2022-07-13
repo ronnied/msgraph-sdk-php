@@ -50,7 +50,7 @@ class DeviceConfigurationSettingState implements AdditionalDataHolder, Parsable
     private ?array $sources = null;
     
     /**
-     * @var ComplianceStatus|null $state The compliance state of the setting. Possible values are: unknown, notApplicable, compliant, remediated, nonCompliant, error, conflict, notAssigned.
+     * @var ComplianceStatus|null $state The state property
     */
     private ?ComplianceStatus $state = null;
     
@@ -177,7 +177,7 @@ class DeviceConfigurationSettingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. The compliance state of the setting. Possible values are: unknown, notApplicable, compliant, remediated, nonCompliant, error, conflict, notAssigned.
+     * Gets the state property value. The state property
      * @return ComplianceStatus|null
     */
     public function getState(): ?ComplianceStatus {
@@ -301,7 +301,7 @@ class DeviceConfigurationSettingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. The compliance state of the setting. Possible values are: unknown, notApplicable, compliant, remediated, nonCompliant, error, conflict, notAssigned.
+     * Sets the state property value. The state property
      *  @param ComplianceStatus|null $value Value to set for the state property.
     */
     public function setState(?ComplianceStatus $value ): void {

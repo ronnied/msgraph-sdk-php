@@ -161,10 +161,11 @@ class Message extends OutlookItem implements Parsable
     private ?string $webLink = null;
     
     /**
-     * Instantiates a new Message and sets the default values.
+     * Instantiates a new message and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.message';
     }
 
     /**
@@ -173,6 +174,14 @@ class Message extends OutlookItem implements Parsable
      * @return Message
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): Message {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.calendarSharingMessage': return new CalendarSharingMessage();
+                case '#microsoft.graph.eventMessage': return new EventMessage();
+            }
+        }
         return new Message();
     }
 

@@ -50,7 +50,7 @@ class Property implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var PropertyType|null $type The data type of the property. Possible values are: string, int64, double, dateTime, boolean, stringCollection, int64Collection, doubleCollection, dateTimeCollection, unknownFutureValue. Required.
+     * @var PropertyType|null $type The type property
     */
     private ?PropertyType $type = null;
     
@@ -153,7 +153,7 @@ class Property implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. The data type of the property. Possible values are: string, int64, double, dateTime, boolean, stringCollection, int64Collection, doubleCollection, dateTimeCollection, unknownFutureValue. Required.
+     * Gets the type property value. The type property
      * @return PropertyType|null
     */
     public function getType(): ?PropertyType {
@@ -241,7 +241,7 @@ class Property implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. The data type of the property. Possible values are: string, int64, double, dateTime, boolean, stringCollection, int64Collection, doubleCollection, dateTimeCollection, unknownFutureValue. Required.
+     * Sets the type property value. The type property
      *  @param PropertyType|null $value Value to set for the type property.
     */
     public function setType(?PropertyType $value ): void {

@@ -210,11 +210,6 @@ class Event extends OutlookItem implements Parsable
     private ?string $transactionId = null;
     
     /**
-     * @var EventType|null $type The type property
-    */
-    private ?EventType $type = null;
-    
-    /**
      * @var string|null $webLink The webLink property
     */
     private ?string $webLink = null;
@@ -346,7 +341,6 @@ class Event extends OutlookItem implements Parsable
             'start' => function (ParseNode $n) use ($o) { $o->setStart($n->getObjectValue(array(DateTimeTimeZone::class, 'createFromDiscriminatorValue'))); },
             'subject' => function (ParseNode $n) use ($o) { $o->setSubject($n->getStringValue()); },
             'transactionId' => function (ParseNode $n) use ($o) { $o->setTransactionId($n->getStringValue()); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getEnumValue(EventType::class)); },
             'webLink' => function (ParseNode $n) use ($o) { $o->setWebLink($n->getStringValue()); },
         ]);
     }
@@ -608,14 +602,6 @@ class Event extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the type property value. The type property
-     * @return EventType|null
-    */
-    public function getType(): ?EventType {
-        return $this->type;
-    }
-
-    /**
      * Gets the webLink property value. The webLink property
      * @return string|null
     */
@@ -669,7 +655,6 @@ class Event extends OutlookItem implements Parsable
         $writer->writeObjectValue('start', $this->start);
         $writer->writeStringValue('subject', $this->subject);
         $writer->writeStringValue('transactionId', $this->transactionId);
-        $writer->writeEnumValue('type', $this->type);
         $writer->writeStringValue('webLink', $this->webLink);
     }
 
@@ -991,14 +976,6 @@ class Event extends OutlookItem implements Parsable
     */
     public function setTransactionId(?string $value ): void {
         $this->transactionId = $value;
-    }
-
-    /**
-     * Sets the type property value. The type property
-     *  @param EventType|null $value Value to set for the type property.
-    */
-    public function setType(?EventType $value ): void {
-        $this->type = $value;
     }
 
     /**

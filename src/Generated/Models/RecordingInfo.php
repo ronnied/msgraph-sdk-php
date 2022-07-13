@@ -20,7 +20,7 @@ class RecordingInfo implements AdditionalDataHolder, Parsable
     private ?IdentitySet $initiator = null;
     
     /**
-     * @var RecordingStatus|null $recordingStatus Possible values are: unknown, notRecording, recording, or failed.
+     * @var RecordingStatus|null $recordingStatus The recordingStatus property
     */
     private ?RecordingStatus $recordingStatus = null;
     
@@ -69,7 +69,7 @@ class RecordingInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recordingStatus property value. Possible values are: unknown, notRecording, recording, or failed.
+     * Gets the recordingStatus property value. The recordingStatus property
      * @return RecordingStatus|null
     */
     public function getRecordingStatus(): ?RecordingStatus {
@@ -103,7 +103,7 @@ class RecordingInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the recordingStatus property value. Possible values are: unknown, notRecording, recording, or failed.
+     * Sets the recordingStatus property value. The recordingStatus property
      *  @param RecordingStatus|null $value Value to set for the recordingStatus property.
     */
     public function setRecordingStatus(?RecordingStatus $value ): void {

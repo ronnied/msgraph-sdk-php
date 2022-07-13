@@ -15,7 +15,7 @@ class ConditionalAccessFilter implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var FilterMode|null $mode Mode to use for the filter. Possible values are include or exclude.
+     * @var FilterMode|null $mode The mode property
     */
     private ?FilterMode $mode = null;
     
@@ -61,7 +61,7 @@ class ConditionalAccessFilter implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the mode property value. Mode to use for the filter. Possible values are include or exclude.
+     * Gets the mode property value. The mode property
      * @return FilterMode|null
     */
     public function getMode(): ?FilterMode {
@@ -95,7 +95,7 @@ class ConditionalAccessFilter implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the mode property value. Mode to use for the filter. Possible values are include or exclude.
+     * Sets the mode property value. The mode property
      *  @param FilterMode|null $value Value to set for the mode property.
     */
     public function setMode(?FilterMode $value ): void {

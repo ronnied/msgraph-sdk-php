@@ -15,7 +15,7 @@ class BookingWorkHours implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var DayOfWeek|null $day The day of the week represented by this instance. Possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday.
+     * @var DayOfWeek|null $day The day property
     */
     private ?DayOfWeek $day = null;
     
@@ -49,7 +49,7 @@ class BookingWorkHours implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the day property value. The day of the week represented by this instance. Possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday.
+     * Gets the day property value. The day property
      * @return DayOfWeek|null
     */
     public function getDay(): ?DayOfWeek {
@@ -95,7 +95,7 @@ class BookingWorkHours implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the day property value. The day of the week represented by this instance. Possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday.
+     * Sets the day property value. The day property
      *  @param DayOfWeek|null $value Value to set for the day property.
     */
     public function setDay(?DayOfWeek $value ): void {

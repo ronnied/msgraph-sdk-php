@@ -25,7 +25,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget implements Addition
     private ?string $targetedAuthenticationMethod = null;
     
     /**
-     * @var AuthenticationMethodTargetType|null $targetType The type of the authentication method target. Possible values are: user, group, unknownFutureValue.
+     * @var AuthenticationMethodTargetType|null $targetType The targetType property
     */
     private ?AuthenticationMethodTargetType $targetType = null;
     
@@ -83,7 +83,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget implements Addition
     }
 
     /**
-     * Gets the targetType property value. The type of the authentication method target. Possible values are: user, group, unknownFutureValue.
+     * Gets the targetType property value. The targetType property
      * @return AuthenticationMethodTargetType|null
     */
     public function getTargetType(): ?AuthenticationMethodTargetType {
@@ -126,7 +126,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget implements Addition
     }
 
     /**
-     * Sets the targetType property value. The type of the authentication method target. Possible values are: user, group, unknownFutureValue.
+     * Sets the targetType property value. The targetType property
      *  @param AuthenticationMethodTargetType|null $value Value to set for the targetType property.
     */
     public function setTargetType(?AuthenticationMethodTargetType $value ): void {

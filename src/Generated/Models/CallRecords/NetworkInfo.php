@@ -25,7 +25,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     private ?string $basicServiceSetIdentifier = null;
     
     /**
-     * @var NetworkConnectionType|null $connectionType Type of network used by the media endpoint. Possible values are: unknown, wired, wifi, mobile, tunnel, unknownFutureValue.
+     * @var NetworkConnectionType|null $connectionType The connectionType property
     */
     private ?NetworkConnectionType $connectionType = null;
     
@@ -55,7 +55,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     private ?string $macAddress = null;
     
     /**
-     * @var NetworkTransportProtocol|null $networkTransportProtocol Network protocol used for the transmission of stream. Possible values are: unknown, udp, tcp, unknownFutureValue.
+     * @var NetworkTransportProtocol|null $networkTransportProtocol The networkTransportProtocol property
     */
     private ?NetworkTransportProtocol $networkTransportProtocol = null;
     
@@ -95,12 +95,12 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     private ?string $subnet = null;
     
     /**
-     * @var array<TraceRouteHop>|null $traceRouteHops List of network trace route hops collected for this media stream.
+     * @var array<TraceRouteHop>|null $traceRouteHops List of network trace route hops collected for this media stream.*
     */
     private ?array $traceRouteHops = null;
     
     /**
-     * @var WifiBand|null $wifiBand WiFi band used by the media endpoint. Possible values are: unknown, frequency24GHz, frequency50GHz, frequency60GHz, unknownFutureValue.
+     * @var WifiBand|null $wifiBand The wifiBand property
     */
     private ?WifiBand $wifiBand = null;
     
@@ -125,7 +125,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     private ?string $wifiMicrosoftDriverVersion = null;
     
     /**
-     * @var WifiRadioType|null $wifiRadioType Type of WiFi radio used by the media endpoint. Possible values are: unknown, wifi80211a, wifi80211b, wifi80211g, wifi80211n, wifi80211ac, wifi80211ax, unknownFutureValue.
+     * @var WifiRadioType|null $wifiRadioType The wifiRadioType property
     */
     private ?WifiRadioType $wifiRadioType = null;
     
@@ -185,7 +185,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the connectionType property value. Type of network used by the media endpoint. Possible values are: unknown, wired, wifi, mobile, tunnel, unknownFutureValue.
+     * Gets the connectionType property value. The connectionType property
      * @return NetworkConnectionType|null
     */
     public function getConnectionType(): ?NetworkConnectionType {
@@ -269,7 +269,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the networkTransportProtocol property value. Network protocol used for the transmission of stream. Possible values are: unknown, udp, tcp, unknownFutureValue.
+     * Gets the networkTransportProtocol property value. The networkTransportProtocol property
      * @return NetworkTransportProtocol|null
     */
     public function getNetworkTransportProtocol(): ?NetworkTransportProtocol {
@@ -333,7 +333,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the traceRouteHops property value. List of network trace route hops collected for this media stream.
+     * Gets the traceRouteHops property value. List of network trace route hops collected for this media stream.*
      * @return array<TraceRouteHop>|null
     */
     public function getTraceRouteHops(): ?array {
@@ -341,7 +341,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the wifiBand property value. WiFi band used by the media endpoint. Possible values are: unknown, frequency24GHz, frequency50GHz, frequency60GHz, unknownFutureValue.
+     * Gets the wifiBand property value. The wifiBand property
      * @return WifiBand|null
     */
     public function getWifiBand(): ?WifiBand {
@@ -381,7 +381,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the wifiRadioType property value. Type of WiFi radio used by the media endpoint. Possible values are: unknown, wifi80211a, wifi80211b, wifi80211g, wifi80211n, wifi80211ac, wifi80211ax, unknownFutureValue.
+     * Gets the wifiRadioType property value. The wifiRadioType property
      * @return WifiRadioType|null
     */
     public function getWifiRadioType(): ?WifiRadioType {
@@ -471,7 +471,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the connectionType property value. Type of network used by the media endpoint. Possible values are: unknown, wired, wifi, mobile, tunnel, unknownFutureValue.
+     * Sets the connectionType property value. The connectionType property
      *  @param NetworkConnectionType|null $value Value to set for the connectionType property.
     */
     public function setConnectionType(?NetworkConnectionType $value ): void {
@@ -519,7 +519,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the networkTransportProtocol property value. Network protocol used for the transmission of stream. Possible values are: unknown, udp, tcp, unknownFutureValue.
+     * Sets the networkTransportProtocol property value. The networkTransportProtocol property
      *  @param NetworkTransportProtocol|null $value Value to set for the networkTransportProtocol property.
     */
     public function setNetworkTransportProtocol(?NetworkTransportProtocol $value ): void {
@@ -583,7 +583,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the traceRouteHops property value. List of network trace route hops collected for this media stream.
+     * Sets the traceRouteHops property value. List of network trace route hops collected for this media stream.*
      *  @param array<TraceRouteHop>|null $value Value to set for the traceRouteHops property.
     */
     public function setTraceRouteHops(?array $value ): void {
@@ -591,7 +591,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the wifiBand property value. WiFi band used by the media endpoint. Possible values are: unknown, frequency24GHz, frequency50GHz, frequency60GHz, unknownFutureValue.
+     * Sets the wifiBand property value. The wifiBand property
      *  @param WifiBand|null $value Value to set for the wifiBand property.
     */
     public function setWifiBand(?WifiBand $value ): void {
@@ -631,7 +631,7 @@ class NetworkInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the wifiRadioType property value. Type of WiFi radio used by the media endpoint. Possible values are: unknown, wifi80211a, wifi80211b, wifi80211g, wifi80211n, wifi80211ac, wifi80211ax, unknownFutureValue.
+     * Sets the wifiRadioType property value. The wifiRadioType property
      *  @param WifiRadioType|null $value Value to set for the wifiRadioType property.
     */
     public function setWifiRadioType(?WifiRadioType $value ): void {

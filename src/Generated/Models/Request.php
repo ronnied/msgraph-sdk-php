@@ -40,10 +40,11 @@ class Request extends Entity implements Parsable
     private ?string $status = null;
     
     /**
-     * Instantiates a new request and sets the default values.
+     * Instantiates a new Request and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.request';
     }
 
     /**

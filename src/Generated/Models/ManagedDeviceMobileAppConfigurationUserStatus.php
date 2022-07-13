@@ -20,7 +20,7 @@ class ManagedDeviceMobileAppConfigurationUserStatus extends Entity implements Pa
     private ?DateTime $lastReportedDateTime = null;
     
     /**
-     * @var ComplianceStatus|null $status Compliance status of the policy report. Possible values are: unknown, notApplicable, compliant, remediated, nonCompliant, error, conflict, notAssigned.
+     * @var ComplianceStatus|null $status The status property
     */
     private ?ComplianceStatus $status = null;
     
@@ -82,7 +82,7 @@ class ManagedDeviceMobileAppConfigurationUserStatus extends Entity implements Pa
     }
 
     /**
-     * Gets the status property value. Compliance status of the policy report. Possible values are: unknown, notApplicable, compliant, remediated, nonCompliant, error, conflict, notAssigned.
+     * Gets the status property value. The status property
      * @return ComplianceStatus|null
     */
     public function getStatus(): ?ComplianceStatus {
@@ -135,7 +135,7 @@ class ManagedDeviceMobileAppConfigurationUserStatus extends Entity implements Pa
     }
 
     /**
-     * Sets the status property value. Compliance status of the policy report. Possible values are: unknown, notApplicable, compliant, remediated, nonCompliant, error, conflict, notAssigned.
+     * Sets the status property value. The status property
      *  @param ComplianceStatus|null $value Value to set for the status property.
     */
     public function setStatus(?ComplianceStatus $value ): void {

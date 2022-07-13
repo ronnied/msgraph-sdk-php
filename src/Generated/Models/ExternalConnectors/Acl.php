@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class Acl implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var AccessType|null $accessType The access granted to the identity. Possible values are: grant, deny.
+     * @var AccessType|null $accessType The accessType property
     */
     private ?AccessType $accessType = null;
     
@@ -20,7 +20,7 @@ class Acl implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var AclType|null $type The type of identity. Possible values are: user, group, everyone, everyoneExceptGuests if the identitySource is azureActiveDirectory and just group if the identitySource is external.
+     * @var AclType|null $type The type property
     */
     private ?AclType $type = null;
     
@@ -46,7 +46,7 @@ class Acl implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the accessType property value. The access granted to the identity. Possible values are: grant, deny.
+     * Gets the accessType property value. The accessType property
      * @return AccessType|null
     */
     public function getAccessType(): ?AccessType {
@@ -75,7 +75,7 @@ class Acl implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. The type of identity. Possible values are: user, group, everyone, everyoneExceptGuests if the identitySource is azureActiveDirectory and just group if the identitySource is external.
+     * Gets the type property value. The type property
      * @return AclType|null
     */
     public function getType(): ?AclType {
@@ -102,7 +102,7 @@ class Acl implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the accessType property value. The access granted to the identity. Possible values are: grant, deny.
+     * Sets the accessType property value. The accessType property
      *  @param AccessType|null $value Value to set for the accessType property.
     */
     public function setAccessType(?AccessType $value ): void {
@@ -118,7 +118,7 @@ class Acl implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. The type of identity. Possible values are: user, group, everyone, everyoneExceptGuests if the identitySource is azureActiveDirectory and just group if the identitySource is external.
+     * Sets the type property value. The type property
      *  @param AclType|null $value Value to set for the type property.
     */
     public function setType(?AclType $value ): void {

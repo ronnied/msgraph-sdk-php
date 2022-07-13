@@ -35,7 +35,7 @@ class BucketAggregationDefinition implements AdditionalDataHolder, Parsable
     private ?array $ranges = null;
     
     /**
-     * @var BucketAggregationSortProperty|null $sortBy The possible values are count to sort by the number of matches in the aggregation, keyAsStringto sort alphabeticaly based on the key in the aggregation, keyAsNumber for numerical sorting based on the key in the aggregation. Required.
+     * @var BucketAggregationSortProperty|null $sortBy The sortBy property
     */
     private ?BucketAggregationSortProperty $sortBy = null;
     
@@ -111,7 +111,7 @@ class BucketAggregationDefinition implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sortBy property value. The possible values are count to sort by the number of matches in the aggregation, keyAsStringto sort alphabeticaly based on the key in the aggregation, keyAsNumber for numerical sorting based on the key in the aggregation. Required.
+     * Gets the sortBy property value. The sortBy property
      * @return BucketAggregationSortProperty|null
     */
     public function getSortBy(): ?BucketAggregationSortProperty {
@@ -172,7 +172,7 @@ class BucketAggregationDefinition implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sortBy property value. The possible values are count to sort by the number of matches in the aggregation, keyAsStringto sort alphabeticaly based on the key in the aggregation, keyAsNumber for numerical sorting based on the key in the aggregation. Required.
+     * Sets the sortBy property value. The sortBy property
      *  @param BucketAggregationSortProperty|null $value Value to set for the sortBy property.
     */
     public function setSortBy(?BucketAggregationSortProperty $value ): void {

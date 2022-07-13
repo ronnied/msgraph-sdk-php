@@ -30,7 +30,7 @@ class ItemPreviewInfo implements AdditionalDataHolder, Parsable
     private ?string $postUrl = null;
     
     /**
-     * Instantiates a new ItemPreviewInfo and sets the default values.
+     * Instantiates a new itemPreviewInfo and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

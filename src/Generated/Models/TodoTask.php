@@ -50,7 +50,7 @@ class TodoTask extends Entity implements Parsable
     private ?array $extensions = null;
     
     /**
-     * @var Importance|null $importance The importance of the task. Possible values are: low, normal, high.
+     * @var Importance|null $importance The importance property
     */
     private ?Importance $importance = null;
     
@@ -80,7 +80,7 @@ class TodoTask extends Entity implements Parsable
     private ?DateTimeTimeZone $reminderDateTime = null;
     
     /**
-     * @var TaskStatus|null $status Indicates the state or progress of the task. Possible values are: notStarted, inProgress, completed, waitingOnOthers, deferred.
+     * @var TaskStatus|null $status The status property
     */
     private ?TaskStatus $status = null;
     
@@ -196,7 +196,7 @@ class TodoTask extends Entity implements Parsable
     }
 
     /**
-     * Gets the importance property value. The importance of the task. Possible values are: low, normal, high.
+     * Gets the importance property value. The importance property
      * @return Importance|null
     */
     public function getImportance(): ?Importance {
@@ -244,7 +244,7 @@ class TodoTask extends Entity implements Parsable
     }
 
     /**
-     * Gets the status property value. Indicates the state or progress of the task. Possible values are: notStarted, inProgress, completed, waitingOnOthers, deferred.
+     * Gets the status property value. The status property
      * @return TaskStatus|null
     */
     public function getStatus(): ?TaskStatus {
@@ -348,7 +348,7 @@ class TodoTask extends Entity implements Parsable
     }
 
     /**
-     * Sets the importance property value. The importance of the task. Possible values are: low, normal, high.
+     * Sets the importance property value. The importance property
      *  @param Importance|null $value Value to set for the importance property.
     */
     public function setImportance(?Importance $value ): void {
@@ -396,7 +396,7 @@ class TodoTask extends Entity implements Parsable
     }
 
     /**
-     * Sets the status property value. Indicates the state or progress of the task. Possible values are: notStarted, inProgress, completed, waitingOnOthers, deferred.
+     * Sets the status property value. The status property
      *  @param TaskStatus|null $value Value to set for the status property.
     */
     public function setStatus(?TaskStatus $value ): void {

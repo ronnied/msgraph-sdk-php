@@ -25,7 +25,7 @@ class ImportedWindowsAutopilotDeviceIdentityState implements AdditionalDataHolde
     private ?string $deviceErrorName = null;
     
     /**
-     * @var ImportedWindowsAutopilotDeviceIdentityImportStatus|null $deviceImportStatus Device status reported by Device Directory Service(DDS). Possible values are: unknown, pending, partial, complete, error.
+     * @var ImportedWindowsAutopilotDeviceIdentityImportStatus|null $deviceImportStatus The deviceImportStatus property
     */
     private ?ImportedWindowsAutopilotDeviceIdentityImportStatus $deviceImportStatus = null;
     
@@ -75,7 +75,7 @@ class ImportedWindowsAutopilotDeviceIdentityState implements AdditionalDataHolde
     }
 
     /**
-     * Gets the deviceImportStatus property value. Device status reported by Device Directory Service(DDS). Possible values are: unknown, pending, partial, complete, error.
+     * Gets the deviceImportStatus property value. The deviceImportStatus property
      * @return ImportedWindowsAutopilotDeviceIdentityImportStatus|null
     */
     public function getDeviceImportStatus(): ?ImportedWindowsAutopilotDeviceIdentityImportStatus {
@@ -141,7 +141,7 @@ class ImportedWindowsAutopilotDeviceIdentityState implements AdditionalDataHolde
     }
 
     /**
-     * Sets the deviceImportStatus property value. Device status reported by Device Directory Service(DDS). Possible values are: unknown, pending, partial, complete, error.
+     * Sets the deviceImportStatus property value. The deviceImportStatus property
      *  @param ImportedWindowsAutopilotDeviceIdentityImportStatus|null $value Value to set for the deviceImportStatus property.
     */
     public function setDeviceImportStatus(?ImportedWindowsAutopilotDeviceIdentityImportStatus $value ): void {

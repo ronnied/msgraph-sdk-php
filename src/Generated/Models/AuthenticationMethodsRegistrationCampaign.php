@@ -30,7 +30,7 @@ class AuthenticationMethodsRegistrationCampaign implements AdditionalDataHolder,
     private ?int $snoozeDurationInDays = null;
     
     /**
-     * @var AdvancedConfigState|null $state Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
+     * @var AdvancedConfigState|null $state The state property
     */
     private ?AdvancedConfigState $state = null;
     
@@ -97,7 +97,7 @@ class AuthenticationMethodsRegistrationCampaign implements AdditionalDataHolder,
     }
 
     /**
-     * Gets the state property value. Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
+     * Gets the state property value. The state property
      * @return AdvancedConfigState|null
     */
     public function getState(): ?AdvancedConfigState {
@@ -149,7 +149,7 @@ class AuthenticationMethodsRegistrationCampaign implements AdditionalDataHolder,
     }
 
     /**
-     * Sets the state property value. Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
+     * Sets the state property value. The state property
      *  @param AdvancedConfigState|null $value Value to set for the state property.
     */
     public function setState(?AdvancedConfigState $value ): void {

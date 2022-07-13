@@ -23,6 +23,7 @@ class PolicyBase extends DirectoryObject implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.policyBase';
     }
 
     /**
@@ -36,6 +37,7 @@ class PolicyBase extends DirectoryObject implements Parsable
             $mappingValue = $mappingValueNode->getStringValue();
             switch ($mappingValue) {
                 case '#microsoft.graph.authorizationPolicy': return new AuthorizationPolicy();
+                case '#microsoft.graph.crossTenantAccessPolicy': return new CrossTenantAccessPolicy();
                 case '#microsoft.graph.identitySecurityDefaultsEnforcementPolicy': return new IdentitySecurityDefaultsEnforcementPolicy();
                 case '#microsoft.graph.permissionGrantPolicy': return new PermissionGrantPolicy();
                 case '#microsoft.graph.stsPolicy': return new StsPolicy();

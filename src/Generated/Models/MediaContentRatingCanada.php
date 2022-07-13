@@ -15,12 +15,12 @@ class MediaContentRatingCanada implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var RatingCanadaMoviesType|null $movieRating Movies rating selected for Canada. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove14, agesAbove18, restricted.
+     * @var RatingCanadaMoviesType|null $movieRating Movies rating labels in Canada
     */
     private ?RatingCanadaMoviesType $movieRating = null;
     
     /**
-     * @var RatingCanadaTelevisionType|null $tvRating TV rating selected for Canada. Possible values are: allAllowed, allBlocked, children, childrenAbove8, general, parentalGuidance, agesAbove14, agesAbove18.
+     * @var RatingCanadaTelevisionType|null $tvRating TV content rating labels in Canada
     */
     private ?RatingCanadaTelevisionType $tvRating = null;
     
@@ -61,7 +61,7 @@ class MediaContentRatingCanada implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the movieRating property value. Movies rating selected for Canada. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove14, agesAbove18, restricted.
+     * Gets the movieRating property value. Movies rating labels in Canada
      * @return RatingCanadaMoviesType|null
     */
     public function getMovieRating(): ?RatingCanadaMoviesType {
@@ -69,7 +69,7 @@ class MediaContentRatingCanada implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tvRating property value. TV rating selected for Canada. Possible values are: allAllowed, allBlocked, children, childrenAbove8, general, parentalGuidance, agesAbove14, agesAbove18.
+     * Gets the tvRating property value. TV content rating labels in Canada
      * @return RatingCanadaTelevisionType|null
     */
     public function getTvRating(): ?RatingCanadaTelevisionType {
@@ -95,7 +95,7 @@ class MediaContentRatingCanada implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the movieRating property value. Movies rating selected for Canada. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove14, agesAbove18, restricted.
+     * Sets the movieRating property value. Movies rating labels in Canada
      *  @param RatingCanadaMoviesType|null $value Value to set for the movieRating property.
     */
     public function setMovieRating(?RatingCanadaMoviesType $value ): void {
@@ -103,7 +103,7 @@ class MediaContentRatingCanada implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tvRating property value. TV rating selected for Canada. Possible values are: allAllowed, allBlocked, children, childrenAbove8, general, parentalGuidance, agesAbove14, agesAbove18.
+     * Sets the tvRating property value. TV content rating labels in Canada
      *  @param RatingCanadaTelevisionType|null $value Value to set for the tvRating property.
     */
     public function setTvRating(?RatingCanadaTelevisionType $value ): void {

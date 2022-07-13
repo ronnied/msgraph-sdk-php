@@ -24,11 +24,6 @@ class WorkbookNamedItem extends Entity implements Parsable
     private ?string $scope = null;
     
     /**
-     * @var string|null $type Indicates what type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
-    */
-    private ?string $type = null;
-    
-    /**
      * @var Json|null $value Represents the formula that the name is defined to refer to. E.g. =Sheet14!$B$2:$H$12, =4.75, etc. Read-only.
     */
     private ?Json $value = null;
@@ -77,7 +72,6 @@ class WorkbookNamedItem extends Entity implements Parsable
             'comment' => function (ParseNode $n) use ($o) { $o->setComment($n->getStringValue()); },
             'name' => function (ParseNode $n) use ($o) { $o->setName($n->getStringValue()); },
             'scope' => function (ParseNode $n) use ($o) { $o->setScope($n->getStringValue()); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getStringValue()); },
             'value' => function (ParseNode $n) use ($o) { $o->setValue($n->getObjectValue(array(Json::class, 'createFromDiscriminatorValue'))); },
             'visible' => function (ParseNode $n) use ($o) { $o->setVisible($n->getBooleanValue()); },
             'worksheet' => function (ParseNode $n) use ($o) { $o->setWorksheet($n->getObjectValue(array(WorkbookWorksheet::class, 'createFromDiscriminatorValue'))); },
@@ -98,14 +92,6 @@ class WorkbookNamedItem extends Entity implements Parsable
     */
     public function getScope(): ?string {
         return $this->scope;
-    }
-
-    /**
-     * Gets the type property value. Indicates what type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
-     * @return string|null
-    */
-    public function getType(): ?string {
-        return $this->type;
     }
 
     /**
@@ -141,7 +127,6 @@ class WorkbookNamedItem extends Entity implements Parsable
         $writer->writeStringValue('comment', $this->comment);
         $writer->writeStringValue('name', $this->name);
         $writer->writeStringValue('scope', $this->scope);
-        $writer->writeStringValue('type', $this->type);
         $writer->writeObjectValue('value', $this->value);
         $writer->writeBooleanValue('visible', $this->visible);
         $writer->writeObjectValue('worksheet', $this->worksheet);
@@ -169,14 +154,6 @@ class WorkbookNamedItem extends Entity implements Parsable
     */
     public function setScope(?string $value ): void {
         $this->scope = $value;
-    }
-
-    /**
-     * Sets the type property value. Indicates what type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
-     *  @param string|null $value Value to set for the type property.
-    */
-    public function setType(?string $value ): void {
-        $this->type = $value;
     }
 
     /**

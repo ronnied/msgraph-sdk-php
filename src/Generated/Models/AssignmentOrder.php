@@ -20,7 +20,7 @@ class AssignmentOrder implements AdditionalDataHolder, Parsable
     private ?array $order = null;
     
     /**
-     * Instantiates a new AssignmentOrder and sets the default values.
+     * Instantiates a new assignmentOrder and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

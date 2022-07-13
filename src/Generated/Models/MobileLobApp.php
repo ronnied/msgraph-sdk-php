@@ -33,6 +33,7 @@ class MobileLobApp extends MobileApp implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.mobileLobApp';
     }
 
     /**
@@ -41,6 +42,17 @@ class MobileLobApp extends MobileApp implements Parsable
      * @return MobileLobApp
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): MobileLobApp {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.androidLobApp': return new AndroidLobApp();
+                case '#microsoft.graph.iosLobApp': return new IosLobApp();
+                case '#microsoft.graph.win32LobApp': return new Win32LobApp();
+                case '#microsoft.graph.windowsMobileMSI': return new WindowsMobileMSI();
+                case '#microsoft.graph.windowsUniversalAppX': return new WindowsUniversalAppX();
+            }
+        }
         return new MobileLobApp();
     }
 

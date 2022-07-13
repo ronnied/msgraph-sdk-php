@@ -25,7 +25,7 @@ class SettingSource implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var SettingSourceType|null $sourceType Not yet documented. Possible values are: deviceConfiguration, deviceIntent.
+     * @var SettingSourceType|null $sourceType The sourceType property
     */
     private ?SettingSourceType $sourceType = null;
     
@@ -83,7 +83,7 @@ class SettingSource implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceType property value. Not yet documented. Possible values are: deviceConfiguration, deviceIntent.
+     * Gets the sourceType property value. The sourceType property
      * @return SettingSourceType|null
     */
     public function getSourceType(): ?SettingSourceType {
@@ -126,7 +126,7 @@ class SettingSource implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sourceType property value. Not yet documented. Possible values are: deviceConfiguration, deviceIntent.
+     * Sets the sourceType property value. The sourceType property
      *  @param SettingSourceType|null $value Value to set for the sourceType property.
     */
     public function setSourceType(?SettingSourceType $value ): void {

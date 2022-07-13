@@ -56,7 +56,7 @@ class ArchivedPrintJob implements AdditionalDataHolder, Parsable
     private ?string $printerId = null;
     
     /**
-     * @var PrintJobProcessingState|null $processingState The print job's final processing state. Read-only.
+     * @var PrintJobProcessingState|null $processingState The processingState property
     */
     private ?PrintJobProcessingState $processingState = null;
     
@@ -168,7 +168,7 @@ class ArchivedPrintJob implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the processingState property value. The print job's final processing state. Read-only.
+     * Gets the processingState property value. The processingState property
      * @return PrintJobProcessingState|null
     */
     public function getProcessingState(): ?PrintJobProcessingState {
@@ -265,7 +265,7 @@ class ArchivedPrintJob implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the processingState property value. The print job's final processing state. Read-only.
+     * Sets the processingState property value. The processingState property
      *  @param PrintJobProcessingState|null $value Value to set for the processingState property.
     */
     public function setProcessingState(?PrintJobProcessingState $value ): void {

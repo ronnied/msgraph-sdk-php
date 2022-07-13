@@ -30,7 +30,7 @@ class PrintJobStatus implements AdditionalDataHolder, Parsable
     private ?bool $isAcquiredByPrinter = null;
     
     /**
-     * @var PrintJobProcessingState|null $state The print job's current processing state. Valid values are described in the following table. Read-only.
+     * @var PrintJobProcessingState|null $state The state property
     */
     private ?PrintJobProcessingState $state = null;
     
@@ -97,7 +97,7 @@ class PrintJobStatus implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. The print job's current processing state. Valid values are described in the following table. Read-only.
+     * Gets the state property value. The state property
      * @return PrintJobProcessingState|null
     */
     public function getState(): ?PrintJobProcessingState {
@@ -149,7 +149,7 @@ class PrintJobStatus implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. The print job's current processing state. Valid values are described in the following table. Read-only.
+     * Sets the state property value. The state property
      *  @param PrintJobProcessingState|null $value Value to set for the state property.
     */
     public function setState(?PrintJobProcessingState $value ): void {

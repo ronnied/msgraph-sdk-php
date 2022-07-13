@@ -25,7 +25,7 @@ class WindowsAutopilotDeviceIdentity extends Entity implements Parsable
     private ?string $displayName = null;
     
     /**
-     * @var EnrollmentState|null $enrollmentState Intune enrollment state of the Windows autopilot device. Possible values are: unknown, enrolled, pendingReset, failed, notContacted, blocked.
+     * @var EnrollmentState|null $enrollmentState The enrollmentState property
     */
     private ?EnrollmentState $enrollmentState = null;
     
@@ -130,7 +130,7 @@ class WindowsAutopilotDeviceIdentity extends Entity implements Parsable
     }
 
     /**
-     * Gets the enrollmentState property value. Intune enrollment state of the Windows autopilot device. Possible values are: unknown, enrolled, pendingReset, failed, notContacted, blocked.
+     * Gets the enrollmentState property value. The enrollmentState property
      * @return EnrollmentState|null
     */
     public function getEnrollmentState(): ?EnrollmentState {
@@ -308,7 +308,7 @@ class WindowsAutopilotDeviceIdentity extends Entity implements Parsable
     }
 
     /**
-     * Sets the enrollmentState property value. Intune enrollment state of the Windows autopilot device. Possible values are: unknown, enrolled, pendingReset, failed, notContacted, blocked.
+     * Sets the enrollmentState property value. The enrollmentState property
      *  @param EnrollmentState|null $value Value to set for the enrollmentState property.
     */
     public function setEnrollmentState(?EnrollmentState $value ): void {

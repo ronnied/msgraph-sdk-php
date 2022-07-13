@@ -30,7 +30,7 @@ class BitlockerRecoveryKey extends Entity implements Parsable
     private ?VolumeType $volumeType = null;
     
     /**
-     * Instantiates a new bitlockerRecoveryKey and sets the default values.
+     * Instantiates a new BitlockerRecoveryKey and sets the default values.
     */
     public function __construct() {
         parent::__construct();

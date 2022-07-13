@@ -19,7 +19,7 @@ class PlannerUser extends Entity implements Parsable
     private ?array $tasks = null;
     
     /**
-     * Instantiates a new plannerUser and sets the default values.
+     * Instantiates a new PlannerUser and sets the default values.
     */
     public function __construct() {
         parent::__construct();

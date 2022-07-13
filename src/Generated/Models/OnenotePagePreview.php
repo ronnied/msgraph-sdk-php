@@ -25,7 +25,7 @@ class OnenotePagePreview implements AdditionalDataHolder, Parsable
     private ?string $previewText = null;
     
     /**
-     * Instantiates a new OnenotePagePreview and sets the default values.
+     * Instantiates a new onenotePagePreview and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

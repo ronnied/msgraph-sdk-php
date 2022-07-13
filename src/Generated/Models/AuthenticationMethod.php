@@ -13,6 +13,7 @@ class AuthenticationMethod extends Entity implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.authenticationMethod';
     }
 
     /**
@@ -27,6 +28,7 @@ class AuthenticationMethod extends Entity implements Parsable
             switch ($mappingValue) {
                 case '#microsoft.graph.fido2AuthenticationMethod': return new Fido2AuthenticationMethod();
                 case '#microsoft.graph.microsoftAuthenticatorAuthenticationMethod': return new MicrosoftAuthenticatorAuthenticationMethod();
+                case '#microsoft.graph.passwordAuthenticationMethod': return new PasswordAuthenticationMethod();
                 case '#microsoft.graph.temporaryAccessPassAuthenticationMethod': return new TemporaryAccessPassAuthenticationMethod();
                 case '#microsoft.graph.windowsHelloForBusinessAuthenticationMethod': return new WindowsHelloForBusinessAuthenticationMethod();
             }

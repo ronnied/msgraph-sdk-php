@@ -15,7 +15,7 @@ class Windows10NetworkProxyServer implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var string|null $address Address to the proxy server. Specify an address in the format <server>[':'<port>]
+     * @var string|null $address Address to the proxy server. Specify an address in the format [':']
     */
     private ?string $address = null;
     
@@ -54,7 +54,7 @@ class Windows10NetworkProxyServer implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the address property value. Address to the proxy server. Specify an address in the format <server>[':'<port>]
+     * Gets the address property value. Address to the proxy server. Specify an address in the format [':']
      * @return string|null
     */
     public function getAddress(): ?string {
@@ -110,7 +110,7 @@ class Windows10NetworkProxyServer implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the address property value. Address to the proxy server. Specify an address in the format <server>[':'<port>]
+     * Sets the address property value. Address to the proxy server. Specify an address in the format [':']
      *  @param string|null $value Value to set for the address property.
     */
     public function setAddress(?string $value ): void {

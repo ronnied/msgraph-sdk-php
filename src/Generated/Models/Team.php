@@ -10,6 +10,11 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class Team extends Entity implements Parsable 
 {
     /**
+     * @var array<Channel>|null $allChannels List of channels either hosted in or shared with the team (incoming channels).
+    */
+    private ?array $allChannels = null;
+    
+    /**
      * @var array<Channel>|null $channels The collection of channels and messages associated with the team.
     */
     private ?array $channels = null;
@@ -48,6 +53,11 @@ class Team extends Entity implements Parsable
      * @var TeamGuestSettings|null $guestSettings Settings to configure whether guests can create, update, or delete channels in the team.
     */
     private ?TeamGuestSettings $guestSettings = null;
+    
+    /**
+     * @var array<Channel>|null $incomingChannels List of channels shared with the team.
+    */
+    private ?array $incomingChannels = null;
     
     /**
      * @var array<TeamsAppInstallation>|null $installedApps The apps installed in this team.
@@ -100,9 +110,19 @@ class Team extends Entity implements Parsable
     private ?TeamSpecialization $specialization = null;
     
     /**
+     * @var TeamSummary|null $summary Contains summary information about the team, including number of owners, members, and guests.
+    */
+    private ?TeamSummary $summary = null;
+    
+    /**
      * @var TeamsTemplate|null $template The template this team was created from. See available templates.
     */
     private ?TeamsTemplate $template = null;
+    
+    /**
+     * @var string|null $tenantId The ID of the Azure Active Directory tenant.
+    */
+    private ?string $tenantId = null;
     
     /**
      * @var TeamVisibilityType|null $visibility The visibility of the group and team. Defaults to Public.
@@ -115,7 +135,7 @@ class Team extends Entity implements Parsable
     private ?string $webUrl = null;
     
     /**
-     * Instantiates a new team and sets the default values.
+     * Instantiates a new Team and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -128,6 +148,14 @@ class Team extends Entity implements Parsable
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): Team {
         return new Team();
+    }
+
+    /**
+     * Gets the allChannels property value. List of channels either hosted in or shared with the team (incoming channels).
+     * @return array<Channel>|null
+    */
+    public function getAllChannels(): ?array {
+        return $this->allChannels;
     }
 
     /**
@@ -177,6 +205,7 @@ class Team extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
+            'allChannels' => function (ParseNode $n) use ($o) { $o->setAllChannels($n->getCollectionOfObjectValues(array(Channel::class, 'createFromDiscriminatorValue'))); },
             'channels' => function (ParseNode $n) use ($o) { $o->setChannels($n->getCollectionOfObjectValues(array(Channel::class, 'createFromDiscriminatorValue'))); },
             'classification' => function (ParseNode $n) use ($o) { $o->setClassification($n->getStringValue()); },
             'createdDateTime' => function (ParseNode $n) use ($o) { $o->setCreatedDateTime($n->getDateTimeValue()); },
@@ -185,6 +214,7 @@ class Team extends Entity implements Parsable
             'funSettings' => function (ParseNode $n) use ($o) { $o->setFunSettings($n->getObjectValue(array(TeamFunSettings::class, 'createFromDiscriminatorValue'))); },
             'group' => function (ParseNode $n) use ($o) { $o->setGroup($n->getObjectValue(array(Group::class, 'createFromDiscriminatorValue'))); },
             'guestSettings' => function (ParseNode $n) use ($o) { $o->setGuestSettings($n->getObjectValue(array(TeamGuestSettings::class, 'createFromDiscriminatorValue'))); },
+            'incomingChannels' => function (ParseNode $n) use ($o) { $o->setIncomingChannels($n->getCollectionOfObjectValues(array(Channel::class, 'createFromDiscriminatorValue'))); },
             'installedApps' => function (ParseNode $n) use ($o) { $o->setInstalledApps($n->getCollectionOfObjectValues(array(TeamsAppInstallation::class, 'createFromDiscriminatorValue'))); },
             'internalId' => function (ParseNode $n) use ($o) { $o->setInternalId($n->getStringValue()); },
             'isArchived' => function (ParseNode $n) use ($o) { $o->setIsArchived($n->getBooleanValue()); },
@@ -195,7 +225,9 @@ class Team extends Entity implements Parsable
             'primaryChannel' => function (ParseNode $n) use ($o) { $o->setPrimaryChannel($n->getObjectValue(array(Channel::class, 'createFromDiscriminatorValue'))); },
             'schedule' => function (ParseNode $n) use ($o) { $o->setSchedule($n->getObjectValue(array(Schedule::class, 'createFromDiscriminatorValue'))); },
             'specialization' => function (ParseNode $n) use ($o) { $o->setSpecialization($n->getEnumValue(TeamSpecialization::class)); },
+            'summary' => function (ParseNode $n) use ($o) { $o->setSummary($n->getObjectValue(array(TeamSummary::class, 'createFromDiscriminatorValue'))); },
             'template' => function (ParseNode $n) use ($o) { $o->setTemplate($n->getObjectValue(array(TeamsTemplate::class, 'createFromDiscriminatorValue'))); },
+            'tenantId' => function (ParseNode $n) use ($o) { $o->setTenantId($n->getStringValue()); },
             'visibility' => function (ParseNode $n) use ($o) { $o->setVisibility($n->getEnumValue(TeamVisibilityType::class)); },
             'webUrl' => function (ParseNode $n) use ($o) { $o->setWebUrl($n->getStringValue()); },
         ]);
@@ -223,6 +255,14 @@ class Team extends Entity implements Parsable
     */
     public function getGuestSettings(): ?TeamGuestSettings {
         return $this->guestSettings;
+    }
+
+    /**
+     * Gets the incomingChannels property value. List of channels shared with the team.
+     * @return array<Channel>|null
+    */
+    public function getIncomingChannels(): ?array {
+        return $this->incomingChannels;
     }
 
     /**
@@ -306,11 +346,27 @@ class Team extends Entity implements Parsable
     }
 
     /**
+     * Gets the summary property value. Contains summary information about the team, including number of owners, members, and guests.
+     * @return TeamSummary|null
+    */
+    public function getSummary(): ?TeamSummary {
+        return $this->summary;
+    }
+
+    /**
      * Gets the template property value. The template this team was created from. See available templates.
      * @return TeamsTemplate|null
     */
     public function getTemplate(): ?TeamsTemplate {
         return $this->template;
+    }
+
+    /**
+     * Gets the tenantId property value. The ID of the Azure Active Directory tenant.
+     * @return string|null
+    */
+    public function getTenantId(): ?string {
+        return $this->tenantId;
     }
 
     /**
@@ -335,6 +391,7 @@ class Team extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
+        $writer->writeCollectionOfObjectValues('allChannels', $this->allChannels);
         $writer->writeCollectionOfObjectValues('channels', $this->channels);
         $writer->writeStringValue('classification', $this->classification);
         $writer->writeDateTimeValue('createdDateTime', $this->createdDateTime);
@@ -343,6 +400,7 @@ class Team extends Entity implements Parsable
         $writer->writeObjectValue('funSettings', $this->funSettings);
         $writer->writeObjectValue('group', $this->group);
         $writer->writeObjectValue('guestSettings', $this->guestSettings);
+        $writer->writeCollectionOfObjectValues('incomingChannels', $this->incomingChannels);
         $writer->writeCollectionOfObjectValues('installedApps', $this->installedApps);
         $writer->writeStringValue('internalId', $this->internalId);
         $writer->writeBooleanValue('isArchived', $this->isArchived);
@@ -353,9 +411,19 @@ class Team extends Entity implements Parsable
         $writer->writeObjectValue('primaryChannel', $this->primaryChannel);
         $writer->writeObjectValue('schedule', $this->schedule);
         $writer->writeEnumValue('specialization', $this->specialization);
+        $writer->writeObjectValue('summary', $this->summary);
         $writer->writeObjectValue('template', $this->template);
+        $writer->writeStringValue('tenantId', $this->tenantId);
         $writer->writeEnumValue('visibility', $this->visibility);
         $writer->writeStringValue('webUrl', $this->webUrl);
+    }
+
+    /**
+     * Sets the allChannels property value. List of channels either hosted in or shared with the team (incoming channels).
+     *  @param array<Channel>|null $value Value to set for the allChannels property.
+    */
+    public function setAllChannels(?array $value ): void {
+        $this->allChannels = $value;
     }
 
     /**
@@ -420,6 +488,14 @@ class Team extends Entity implements Parsable
     */
     public function setGuestSettings(?TeamGuestSettings $value ): void {
         $this->guestSettings = $value;
+    }
+
+    /**
+     * Sets the incomingChannels property value. List of channels shared with the team.
+     *  @param array<Channel>|null $value Value to set for the incomingChannels property.
+    */
+    public function setIncomingChannels(?array $value ): void {
+        $this->incomingChannels = $value;
     }
 
     /**
@@ -503,11 +579,27 @@ class Team extends Entity implements Parsable
     }
 
     /**
+     * Sets the summary property value. Contains summary information about the team, including number of owners, members, and guests.
+     *  @param TeamSummary|null $value Value to set for the summary property.
+    */
+    public function setSummary(?TeamSummary $value ): void {
+        $this->summary = $value;
+    }
+
+    /**
      * Sets the template property value. The template this team was created from. See available templates.
      *  @param TeamsTemplate|null $value Value to set for the template property.
     */
     public function setTemplate(?TeamsTemplate $value ): void {
         $this->template = $value;
+    }
+
+    /**
+     * Sets the tenantId property value. The ID of the Azure Active Directory tenant.
+     *  @param string|null $value Value to set for the tenantId property.
+    */
+    public function setTenantId(?string $value ): void {
+        $this->tenantId = $value;
     }
 
     /**

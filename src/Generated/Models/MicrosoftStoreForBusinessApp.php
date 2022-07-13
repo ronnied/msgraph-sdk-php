@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class MicrosoftStoreForBusinessApp extends MobileApp implements Parsable 
 {
     /**
-     * @var MicrosoftStoreForBusinessLicenseType|null $licenseType The app license type. Possible values are: offline, online.
+     * @var MicrosoftStoreForBusinessLicenseType|null $licenseType The licenseType property
     */
     private ?MicrosoftStoreForBusinessLicenseType $licenseType = null;
     
@@ -65,7 +65,7 @@ class MicrosoftStoreForBusinessApp extends MobileApp implements Parsable
     }
 
     /**
-     * Gets the licenseType property value. The app license type. Possible values are: offline, online.
+     * Gets the licenseType property value. The licenseType property
      * @return MicrosoftStoreForBusinessLicenseType|null
     */
     public function getLicenseType(): ?MicrosoftStoreForBusinessLicenseType {
@@ -118,7 +118,7 @@ class MicrosoftStoreForBusinessApp extends MobileApp implements Parsable
     }
 
     /**
-     * Sets the licenseType property value. The app license type. Possible values are: offline, online.
+     * Sets the licenseType property value. The licenseType property
      *  @param MicrosoftStoreForBusinessLicenseType|null $value Value to set for the licenseType property.
     */
     public function setLicenseType(?MicrosoftStoreForBusinessLicenseType $value ): void {

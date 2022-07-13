@@ -21,7 +21,7 @@ class Report implements AdditionalDataHolder, Parsable
     private ?StreamInterface $content = null;
     
     /**
-     * Instantiates a new Report and sets the default values.
+     * Instantiates a new report and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

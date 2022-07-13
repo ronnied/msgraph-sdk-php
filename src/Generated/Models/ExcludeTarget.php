@@ -20,7 +20,7 @@ class ExcludeTarget implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var AuthenticationMethodTargetType|null $targetType The type of the authentication method target. Possible values are: user, group, unknownFutureValue.
+     * @var AuthenticationMethodTargetType|null $targetType The targetType property
     */
     private ?AuthenticationMethodTargetType $targetType = null;
     
@@ -69,7 +69,7 @@ class ExcludeTarget implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the targetType property value. The type of the authentication method target. Possible values are: user, group, unknownFutureValue.
+     * Gets the targetType property value. The targetType property
      * @return AuthenticationMethodTargetType|null
     */
     public function getTargetType(): ?AuthenticationMethodTargetType {
@@ -103,7 +103,7 @@ class ExcludeTarget implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the targetType property value. The type of the authentication method target. Possible values are: user, group, unknownFutureValue.
+     * Sets the targetType property value. The targetType property
      *  @param AuthenticationMethodTargetType|null $value Value to set for the targetType property.
     */
     public function setTargetType(?AuthenticationMethodTargetType $value ): void {

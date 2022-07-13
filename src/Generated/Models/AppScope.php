@@ -14,12 +14,7 @@ class AppScope extends Entity implements Parsable
     private ?string $displayName = null;
     
     /**
-     * @var string|null $type Describes the type of app-specific resource represented by the app scope. Provided for display purposes, so a user interface can convey to the user the kind of app specific resource represented by the app scope. This property is read only.
-    */
-    private ?string $type = null;
-    
-    /**
-     * Instantiates a new appScope and sets the default values.
+     * Instantiates a new AppScope and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -50,16 +45,7 @@ class AppScope extends Entity implements Parsable
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
             'displayName' => function (ParseNode $n) use ($o) { $o->setDisplayName($n->getStringValue()); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getStringValue()); },
         ]);
-    }
-
-    /**
-     * Gets the type property value. Describes the type of app-specific resource represented by the app scope. Provided for display purposes, so a user interface can convey to the user the kind of app specific resource represented by the app scope. This property is read only.
-     * @return string|null
-    */
-    public function getType(): ?string {
-        return $this->type;
     }
 
     /**
@@ -69,7 +55,6 @@ class AppScope extends Entity implements Parsable
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
         $writer->writeStringValue('displayName', $this->displayName);
-        $writer->writeStringValue('type', $this->type);
     }
 
     /**
@@ -78,14 +63,6 @@ class AppScope extends Entity implements Parsable
     */
     public function setDisplayName(?string $value ): void {
         $this->displayName = $value;
-    }
-
-    /**
-     * Sets the type property value. Describes the type of app-specific resource represented by the app scope. Provided for display purposes, so a user interface can convey to the user the kind of app specific resource represented by the app scope. This property is read only.
-     *  @param string|null $value Value to set for the type property.
-    */
-    public function setType(?string $value ): void {
-        $this->type = $value;
     }
 
 }

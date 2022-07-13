@@ -24,11 +24,6 @@ class IdentityProvider extends Entity implements Parsable
     private ?string $name = null;
     
     /**
-     * @var string|null $type The identity provider type is a required field. For B2B scenario: Google, Facebook. For B2C scenario: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo,QQ, WeChat, OpenIDConnect. Not nullable.
-    */
-    private ?string $type = null;
-    
-    /**
      * Instantiates a new identityProvider and sets the default values.
     */
     public function __construct() {
@@ -70,7 +65,6 @@ class IdentityProvider extends Entity implements Parsable
             'clientId' => function (ParseNode $n) use ($o) { $o->setClientId($n->getStringValue()); },
             'clientSecret' => function (ParseNode $n) use ($o) { $o->setClientSecret($n->getStringValue()); },
             'name' => function (ParseNode $n) use ($o) { $o->setName($n->getStringValue()); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getStringValue()); },
         ]);
     }
 
@@ -83,14 +77,6 @@ class IdentityProvider extends Entity implements Parsable
     }
 
     /**
-     * Gets the type property value. The identity provider type is a required field. For B2B scenario: Google, Facebook. For B2C scenario: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo,QQ, WeChat, OpenIDConnect. Not nullable.
-     * @return string|null
-    */
-    public function getType(): ?string {
-        return $this->type;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -99,7 +85,6 @@ class IdentityProvider extends Entity implements Parsable
         $writer->writeStringValue('clientId', $this->clientId);
         $writer->writeStringValue('clientSecret', $this->clientSecret);
         $writer->writeStringValue('name', $this->name);
-        $writer->writeStringValue('type', $this->type);
     }
 
     /**
@@ -124,14 +109,6 @@ class IdentityProvider extends Entity implements Parsable
     */
     public function setName(?string $value ): void {
         $this->name = $value;
-    }
-
-    /**
-     * Sets the type property value. The identity provider type is a required field. For B2B scenario: Google, Facebook. For B2C scenario: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo,QQ, WeChat, OpenIDConnect. Not nullable.
-     *  @param string|null $value Value to set for the type property.
-    */
-    public function setType(?string $value ): void {
-        $this->type = $value;
     }
 
 }

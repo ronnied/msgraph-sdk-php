@@ -25,7 +25,7 @@ class MeetingTimeSuggestionsResult implements AdditionalDataHolder, Parsable
     private ?array $meetingTimeSuggestions = null;
     
     /**
-     * Instantiates a new MeetingTimeSuggestionsResult and sets the default values.
+     * Instantiates a new meetingTimeSuggestionsResult and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

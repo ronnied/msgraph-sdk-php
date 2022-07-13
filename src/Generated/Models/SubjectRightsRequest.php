@@ -100,12 +100,7 @@ class SubjectRightsRequest extends Entity implements Parsable
     private ?Team $team = null;
     
     /**
-     * @var SubjectRightsRequestType|null $type The type of the request. Possible values are: export, delete, access, tagForAction, unknownFutureValue.
-    */
-    private ?SubjectRightsRequestType $type = null;
-    
-    /**
-     * Instantiates a new subjectRightsRequest and sets the default values.
+     * Instantiates a new SubjectRightsRequest and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -209,7 +204,6 @@ class SubjectRightsRequest extends Entity implements Parsable
             'stages' => function (ParseNode $n) use ($o) { $o->setStages($n->getCollectionOfObjectValues(array(SubjectRightsRequestStageDetail::class, 'createFromDiscriminatorValue'))); },
             'status' => function (ParseNode $n) use ($o) { $o->setStatus($n->getEnumValue(SubjectRightsRequestStatus::class)); },
             'team' => function (ParseNode $n) use ($o) { $o->setTeam($n->getObjectValue(array(Team::class, 'createFromDiscriminatorValue'))); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getEnumValue(SubjectRightsRequestType::class)); },
         ]);
     }
 
@@ -294,14 +288,6 @@ class SubjectRightsRequest extends Entity implements Parsable
     }
 
     /**
-     * Gets the type property value. The type of the request. Possible values are: export, delete, access, tagForAction, unknownFutureValue.
-     * @return SubjectRightsRequestType|null
-    */
-    public function getType(): ?SubjectRightsRequestType {
-        return $this->type;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -325,7 +311,6 @@ class SubjectRightsRequest extends Entity implements Parsable
         $writer->writeCollectionOfObjectValues('stages', $this->stages);
         $writer->writeEnumValue('status', $this->status);
         $writer->writeObjectValue('team', $this->team);
-        $writer->writeEnumValue('type', $this->type);
     }
 
     /**
@@ -470,14 +455,6 @@ class SubjectRightsRequest extends Entity implements Parsable
     */
     public function setTeam(?Team $value ): void {
         $this->team = $value;
-    }
-
-    /**
-     * Sets the type property value. The type of the request. Possible values are: export, delete, access, tagForAction, unknownFutureValue.
-     *  @param SubjectRightsRequestType|null $value Value to set for the type property.
-    */
-    public function setType(?SubjectRightsRequestType $value ): void {
-        $this->type = $value;
     }
 
 }

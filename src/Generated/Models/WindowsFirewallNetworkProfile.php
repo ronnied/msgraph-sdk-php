@@ -25,7 +25,7 @@ class WindowsFirewallNetworkProfile implements AdditionalDataHolder, Parsable
     private ?bool $connectionSecurityRulesFromGroupPolicyMerged = null;
     
     /**
-     * @var StateManagementSetting|null $firewallEnabled Configures the host device to allow or block the firewall and advanced security enforcement for the network profile. Possible values are: notConfigured, blocked, allowed.
+     * @var StateManagementSetting|null $firewallEnabled State Management Setting.
     */
     private ?StateManagementSetting $firewallEnabled = null;
     
@@ -137,7 +137,7 @@ class WindowsFirewallNetworkProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the firewallEnabled property value. Configures the host device to allow or block the firewall and advanced security enforcement for the network profile. Possible values are: notConfigured, blocked, allowed.
+     * Gets the firewallEnabled property value. State Management Setting.
      * @return StateManagementSetting|null
     */
     public function getFirewallEnabled(): ?StateManagementSetting {
@@ -261,7 +261,7 @@ class WindowsFirewallNetworkProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the firewallEnabled property value. Configures the host device to allow or block the firewall and advanced security enforcement for the network profile. Possible values are: notConfigured, blocked, allowed.
+     * Sets the firewallEnabled property value. State Management Setting.
      *  @param StateManagementSetting|null $value Value to set for the firewallEnabled property.
     */
     public function setFirewallEnabled(?StateManagementSetting $value ): void {

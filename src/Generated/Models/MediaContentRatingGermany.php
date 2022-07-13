@@ -15,12 +15,12 @@ class MediaContentRatingGermany implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var RatingGermanyMoviesType|null $movieRating Movies rating selected for Germany. Possible values are: allAllowed, allBlocked, general, agesAbove6, agesAbove12, agesAbove16, adults.
+     * @var RatingGermanyMoviesType|null $movieRating Movies rating labels in Germany
     */
     private ?RatingGermanyMoviesType $movieRating = null;
     
     /**
-     * @var RatingGermanyTelevisionType|null $tvRating TV rating selected for Germany. Possible values are: allAllowed, allBlocked, general, agesAbove6, agesAbove12, agesAbove16, adults.
+     * @var RatingGermanyTelevisionType|null $tvRating TV content rating labels in Germany
     */
     private ?RatingGermanyTelevisionType $tvRating = null;
     
@@ -61,7 +61,7 @@ class MediaContentRatingGermany implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the movieRating property value. Movies rating selected for Germany. Possible values are: allAllowed, allBlocked, general, agesAbove6, agesAbove12, agesAbove16, adults.
+     * Gets the movieRating property value. Movies rating labels in Germany
      * @return RatingGermanyMoviesType|null
     */
     public function getMovieRating(): ?RatingGermanyMoviesType {
@@ -69,7 +69,7 @@ class MediaContentRatingGermany implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tvRating property value. TV rating selected for Germany. Possible values are: allAllowed, allBlocked, general, agesAbove6, agesAbove12, agesAbove16, adults.
+     * Gets the tvRating property value. TV content rating labels in Germany
      * @return RatingGermanyTelevisionType|null
     */
     public function getTvRating(): ?RatingGermanyTelevisionType {
@@ -95,7 +95,7 @@ class MediaContentRatingGermany implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the movieRating property value. Movies rating selected for Germany. Possible values are: allAllowed, allBlocked, general, agesAbove6, agesAbove12, agesAbove16, adults.
+     * Sets the movieRating property value. Movies rating labels in Germany
      *  @param RatingGermanyMoviesType|null $value Value to set for the movieRating property.
     */
     public function setMovieRating(?RatingGermanyMoviesType $value ): void {
@@ -103,7 +103,7 @@ class MediaContentRatingGermany implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tvRating property value. TV rating selected for Germany. Possible values are: allAllowed, allBlocked, general, agesAbove6, agesAbove12, agesAbove16, adults.
+     * Sets the tvRating property value. TV content rating labels in Germany
      *  @param RatingGermanyTelevisionType|null $value Value to set for the tvRating property.
     */
     public function setTvRating(?RatingGermanyTelevisionType $value ): void {

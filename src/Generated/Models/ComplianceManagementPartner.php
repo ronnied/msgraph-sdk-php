@@ -50,7 +50,7 @@ class ComplianceManagementPartner extends Entity implements Parsable
     private ?bool $macOsOnboarded = null;
     
     /**
-     * @var DeviceManagementPartnerTenantState|null $partnerState Partner state of this tenant. Possible values are: unknown, unavailable, enabled, terminated, rejected, unresponsive.
+     * @var DeviceManagementPartnerTenantState|null $partnerState Partner state of this tenant.
     */
     private ?DeviceManagementPartnerTenantState $partnerState = null;
     
@@ -154,7 +154,7 @@ class ComplianceManagementPartner extends Entity implements Parsable
     }
 
     /**
-     * Gets the partnerState property value. Partner state of this tenant. Possible values are: unknown, unavailable, enabled, terminated, rejected, unresponsive.
+     * Gets the partnerState property value. Partner state of this tenant.
      * @return DeviceManagementPartnerTenantState|null
     */
     public function getPartnerState(): ?DeviceManagementPartnerTenantState {
@@ -243,7 +243,7 @@ class ComplianceManagementPartner extends Entity implements Parsable
     }
 
     /**
-     * Sets the partnerState property value. Partner state of this tenant. Possible values are: unknown, unavailable, enabled, terminated, rejected, unresponsive.
+     * Sets the partnerState property value. Partner state of this tenant.
      *  @param DeviceManagementPartnerTenantState|null $value Value to set for the partnerState property.
     */
     public function setPartnerState(?DeviceManagementPartnerTenantState $value ): void {

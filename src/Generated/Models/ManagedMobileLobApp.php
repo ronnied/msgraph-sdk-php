@@ -29,10 +29,11 @@ class ManagedMobileLobApp extends ManagedApp implements Parsable
     private ?int $size = null;
     
     /**
-     * Instantiates a new managedMobileLobApp and sets the default values.
+     * Instantiates a new ManagedMobileLobApp and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.managedMobileLobApp';
     }
 
     /**

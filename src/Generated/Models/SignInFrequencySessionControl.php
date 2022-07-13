@@ -9,17 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class SignInFrequencySessionControl extends ConditionalAccessSessionControl implements Parsable 
 {
     /**
-     * @var SigninFrequencyType|null $type Possible values are: days, hours, or null if frequencyInterval is everyTime .
-    */
-    private ?SigninFrequencyType $type = null;
-    
-    /**
      * @var int|null $value The number of days or hours.
     */
     private ?int $value = null;
     
     /**
-     * Instantiates a new signInFrequencySessionControl and sets the default values.
+     * Instantiates a new SignInFrequencySessionControl and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -41,17 +36,8 @@ class SignInFrequencySessionControl extends ConditionalAccessSessionControl impl
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getEnumValue(SigninFrequencyType::class)); },
             'value' => function (ParseNode $n) use ($o) { $o->setValue($n->getIntegerValue()); },
         ]);
-    }
-
-    /**
-     * Gets the type property value. Possible values are: days, hours, or null if frequencyInterval is everyTime .
-     * @return SigninFrequencyType|null
-    */
-    public function getType(): ?SigninFrequencyType {
-        return $this->type;
     }
 
     /**
@@ -68,16 +54,7 @@ class SignInFrequencySessionControl extends ConditionalAccessSessionControl impl
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeEnumValue('type', $this->type);
         $writer->writeIntegerValue('value', $this->value);
-    }
-
-    /**
-     * Sets the type property value. Possible values are: days, hours, or null if frequencyInterval is everyTime .
-     *  @param SigninFrequencyType|null $value Value to set for the type property.
-    */
-    public function setType(?SigninFrequencyType $value ): void {
-        $this->type = $value;
     }
 
     /**

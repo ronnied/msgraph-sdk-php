@@ -159,11 +159,6 @@ class ColumnDefinition extends Entity implements Parsable
     private ?ThumbnailColumn $thumbnail = null;
     
     /**
-     * @var ColumnTypes|null $type For site columns, the type of column. Read-only.
-    */
-    private ?ColumnTypes $type = null;
-    
-    /**
      * @var ColumnValidation|null $validation This column stores validation formula and message for the column.
     */
     private ?ColumnValidation $validation = null;
@@ -309,7 +304,6 @@ class ColumnDefinition extends Entity implements Parsable
             'term' => function (ParseNode $n) use ($o) { $o->setTerm($n->getObjectValue(array(TermColumn::class, 'createFromDiscriminatorValue'))); },
             'text' => function (ParseNode $n) use ($o) { $o->setText($n->getObjectValue(array(TextColumn::class, 'createFromDiscriminatorValue'))); },
             'thumbnail' => function (ParseNode $n) use ($o) { $o->setThumbnail($n->getObjectValue(array(ThumbnailColumn::class, 'createFromDiscriminatorValue'))); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getEnumValue(ColumnTypes::class)); },
             'validation' => function (ParseNode $n) use ($o) { $o->setValidation($n->getObjectValue(array(ColumnValidation::class, 'createFromDiscriminatorValue'))); },
         ]);
     }
@@ -467,14 +461,6 @@ class ColumnDefinition extends Entity implements Parsable
     }
 
     /**
-     * Gets the type property value. For site columns, the type of column. Read-only.
-     * @return ColumnTypes|null
-    */
-    public function getType(): ?ColumnTypes {
-        return $this->type;
-    }
-
-    /**
      * Gets the validation property value. This column stores validation formula and message for the column.
      * @return ColumnValidation|null
     */
@@ -518,7 +504,6 @@ class ColumnDefinition extends Entity implements Parsable
         $writer->writeObjectValue('term', $this->term);
         $writer->writeObjectValue('text', $this->text);
         $writer->writeObjectValue('thumbnail', $this->thumbnail);
-        $writer->writeEnumValue('type', $this->type);
         $writer->writeObjectValue('validation', $this->validation);
     }
 
@@ -760,14 +745,6 @@ class ColumnDefinition extends Entity implements Parsable
     */
     public function setThumbnail(?ThumbnailColumn $value ): void {
         $this->thumbnail = $value;
-    }
-
-    /**
-     * Sets the type property value. For site columns, the type of column. Read-only.
-     *  @param ColumnTypes|null $value Value to set for the type property.
-    */
-    public function setType(?ColumnTypes $value ): void {
-        $this->type = $value;
     }
 
     /**

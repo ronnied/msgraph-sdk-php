@@ -89,7 +89,7 @@ class UnifiedRoleAssignmentScheduleRequest extends Request implements Parsable
     private ?TicketInfo $ticketInfo = null;
     
     /**
-     * Instantiates a new UnifiedRoleAssignmentScheduleRequest and sets the default values.
+     * Instantiates a new unifiedRoleAssignmentScheduleRequest and sets the default values.
     */
     public function __construct() {
         parent::__construct();

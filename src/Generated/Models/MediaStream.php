@@ -15,7 +15,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var MediaDirection|null $direction The direction. The possible values are inactive, sendOnly, receiveOnly, sendReceive.
+     * @var MediaDirection|null $direction The direction property
     */
     private ?MediaDirection $direction = null;
     
@@ -25,7 +25,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     private ?string $label = null;
     
     /**
-     * @var Modality|null $mediaType The media type. The possible value are unknown, audio, video, videoBasedScreenSharing, data.
+     * @var Modality|null $mediaType The mediaType property
     */
     private ?Modality $mediaType = null;
     
@@ -64,7 +64,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the direction property value. The direction. The possible values are inactive, sendOnly, receiveOnly, sendReceive.
+     * Gets the direction property value. The direction property
      * @return MediaDirection|null
     */
     public function getDirection(): ?MediaDirection {
@@ -95,7 +95,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the mediaType property value. The media type. The possible value are unknown, audio, video, videoBasedScreenSharing, data.
+     * Gets the mediaType property value. The mediaType property
      * @return Modality|null
     */
     public function getMediaType(): ?Modality {
@@ -140,7 +140,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the direction property value. The direction. The possible values are inactive, sendOnly, receiveOnly, sendReceive.
+     * Sets the direction property value. The direction property
      *  @param MediaDirection|null $value Value to set for the direction property.
     */
     public function setDirection(?MediaDirection $value ): void {
@@ -156,7 +156,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the mediaType property value. The media type. The possible value are unknown, audio, video, videoBasedScreenSharing, data.
+     * Sets the mediaType property value. The mediaType property
      *  @param Modality|null $value Value to set for the mediaType property.
     */
     public function setMediaType(?Modality $value ): void {

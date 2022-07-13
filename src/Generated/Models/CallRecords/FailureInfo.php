@@ -20,7 +20,7 @@ class FailureInfo implements AdditionalDataHolder, Parsable
     private ?string $reason = null;
     
     /**
-     * @var FailureStage|null $stage The stage when the failure occurred. Possible values are: unknown, callSetup, midcall, unknownFutureValue.
+     * @var FailureStage|null $stage The stage property
     */
     private ?FailureStage $stage = null;
     
@@ -69,7 +69,7 @@ class FailureInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the stage property value. The stage when the failure occurred. Possible values are: unknown, callSetup, midcall, unknownFutureValue.
+     * Gets the stage property value. The stage property
      * @return FailureStage|null
     */
     public function getStage(): ?FailureStage {
@@ -103,7 +103,7 @@ class FailureInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the stage property value. The stage when the failure occurred. Possible values are: unknown, callSetup, midcall, unknownFutureValue.
+     * Sets the stage property value. The stage property
      *  @param FailureStage|null $value Value to set for the stage property.
     */
     public function setStage(?FailureStage $value ): void {

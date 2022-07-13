@@ -30,10 +30,11 @@ class OnenoteEntityHierarchyModel extends OnenoteEntitySchemaObjectModel impleme
     private ?DateTime $lastModifiedDateTime = null;
     
     /**
-     * Instantiates a new onenoteEntityHierarchyModel and sets the default values.
+     * Instantiates a new OnenoteEntityHierarchyModel and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.onenoteEntityHierarchyModel';
     }
 
     /**

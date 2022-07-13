@@ -9,10 +9,11 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class BookingCustomerBase extends Entity implements Parsable 
 {
     /**
-     * Instantiates a new bookingCustomerBase and sets the default values.
+     * Instantiates a new BookingCustomerBase and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.bookingCustomerBase';
     }
 
     /**

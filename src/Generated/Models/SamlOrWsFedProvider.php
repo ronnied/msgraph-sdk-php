@@ -38,6 +38,7 @@ class SamlOrWsFedProvider extends IdentityProviderBase implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.samlOrWsFedProvider';
     }
 
     /**
@@ -46,6 +47,14 @@ class SamlOrWsFedProvider extends IdentityProviderBase implements Parsable
      * @return SamlOrWsFedProvider
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): SamlOrWsFedProvider {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.internalDomainFederation': return new InternalDomainFederation();
+                case '#microsoft.graph.samlOrWsFedExternalDomainFederation': return new SamlOrWsFedExternalDomainFederation();
+            }
+        }
         return new SamlOrWsFedProvider();
     }
 

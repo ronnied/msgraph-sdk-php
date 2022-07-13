@@ -15,12 +15,12 @@ class ConditionalAccessApplications implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var array<string>|null $excludeApplications The list of application IDs explicitly excluded from the policy.
+     * @var array<string>|null $excludeApplications Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
     */
     private ?array $excludeApplications = null;
     
     /**
-     * @var array<string>|null $includeApplications The list of application IDs the policy applies to, unless explicitly excluded (in excludeApplications). Can also be set to All.
+     * @var array<string>|null $includeApplications Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
     */
     private ?array $includeApplications = null;
     
@@ -59,7 +59,7 @@ class ConditionalAccessApplications implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the excludeApplications property value. The list of application IDs explicitly excluded from the policy.
+     * Gets the excludeApplications property value. Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
      * @return array<string>|null
     */
     public function getExcludeApplications(): ?array {
@@ -81,7 +81,7 @@ class ConditionalAccessApplications implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the includeApplications property value. The list of application IDs the policy applies to, unless explicitly excluded (in excludeApplications). Can also be set to All.
+     * Gets the includeApplications property value. Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
      * @return array<string>|null
     */
     public function getIncludeApplications(): ?array {
@@ -125,7 +125,7 @@ class ConditionalAccessApplications implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the excludeApplications property value. The list of application IDs explicitly excluded from the policy.
+     * Sets the excludeApplications property value. Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
      *  @param array<string>|null $value Value to set for the excludeApplications property.
     */
     public function setExcludeApplications(?array $value ): void {
@@ -133,7 +133,7 @@ class ConditionalAccessApplications implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the includeApplications property value. The list of application IDs the policy applies to, unless explicitly excluded (in excludeApplications). Can also be set to All.
+     * Sets the includeApplications property value. Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
      *  @param array<string>|null $value Value to set for the includeApplications property.
     */
     public function setIncludeApplications(?array $value ): void {

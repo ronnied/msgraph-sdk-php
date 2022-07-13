@@ -15,12 +15,12 @@ class MediaContentRatingUnitedStates implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var RatingUnitedStatesMoviesType|null $movieRating Movies rating selected for United States. Possible values are: allAllowed, allBlocked, general, parentalGuidance, parentalGuidance13, restricted, adults.
+     * @var RatingUnitedStatesMoviesType|null $movieRating Movies rating labels in United States
     */
     private ?RatingUnitedStatesMoviesType $movieRating = null;
     
     /**
-     * @var RatingUnitedStatesTelevisionType|null $tvRating TV rating selected for United States. Possible values are: allAllowed, allBlocked, childrenAll, childrenAbove7, general, parentalGuidance, childrenAbove14, adults.
+     * @var RatingUnitedStatesTelevisionType|null $tvRating TV content rating labels in United States
     */
     private ?RatingUnitedStatesTelevisionType $tvRating = null;
     
@@ -61,7 +61,7 @@ class MediaContentRatingUnitedStates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the movieRating property value. Movies rating selected for United States. Possible values are: allAllowed, allBlocked, general, parentalGuidance, parentalGuidance13, restricted, adults.
+     * Gets the movieRating property value. Movies rating labels in United States
      * @return RatingUnitedStatesMoviesType|null
     */
     public function getMovieRating(): ?RatingUnitedStatesMoviesType {
@@ -69,7 +69,7 @@ class MediaContentRatingUnitedStates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tvRating property value. TV rating selected for United States. Possible values are: allAllowed, allBlocked, childrenAll, childrenAbove7, general, parentalGuidance, childrenAbove14, adults.
+     * Gets the tvRating property value. TV content rating labels in United States
      * @return RatingUnitedStatesTelevisionType|null
     */
     public function getTvRating(): ?RatingUnitedStatesTelevisionType {
@@ -95,7 +95,7 @@ class MediaContentRatingUnitedStates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the movieRating property value. Movies rating selected for United States. Possible values are: allAllowed, allBlocked, general, parentalGuidance, parentalGuidance13, restricted, adults.
+     * Sets the movieRating property value. Movies rating labels in United States
      *  @param RatingUnitedStatesMoviesType|null $value Value to set for the movieRating property.
     */
     public function setMovieRating(?RatingUnitedStatesMoviesType $value ): void {
@@ -103,7 +103,7 @@ class MediaContentRatingUnitedStates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tvRating property value. TV rating selected for United States. Possible values are: allAllowed, allBlocked, childrenAll, childrenAbove7, general, parentalGuidance, childrenAbove14, adults.
+     * Sets the tvRating property value. TV content rating labels in United States
      *  @param RatingUnitedStatesTelevisionType|null $value Value to set for the tvRating property.
     */
     public function setTvRating(?RatingUnitedStatesTelevisionType $value ): void {

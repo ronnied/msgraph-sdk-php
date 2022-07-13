@@ -24,7 +24,7 @@ class WindowsInformationProtection extends ManagedAppPolicy implements Parsable
     private ?WindowsInformationProtectionDataRecoveryCertificate $dataRecoveryCertificate = null;
     
     /**
-     * @var WindowsInformationProtectionEnforcementLevel|null $enforcementLevel WIP enforcement level.See the Enum definition for supported values. Possible values are: noProtection, encryptAndAuditOnly, encryptAuditAndPrompt, encryptAuditAndBlock.
+     * @var WindowsInformationProtectionEnforcementLevel|null $enforcementLevel Possible values for WIP Protection enforcement levels
     */
     private ?WindowsInformationProtectionEnforcementLevel $enforcementLevel = null;
     
@@ -138,6 +138,7 @@ class WindowsInformationProtection extends ManagedAppPolicy implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.windowsInformationProtection';
     }
 
     /**
@@ -146,6 +147,14 @@ class WindowsInformationProtection extends ManagedAppPolicy implements Parsable
      * @return WindowsInformationProtection
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): WindowsInformationProtection {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.mdmWindowsInformationProtectionPolicy': return new MdmWindowsInformationProtectionPolicy();
+                case '#microsoft.graph.windowsInformationProtectionPolicy': return new WindowsInformationProtectionPolicy();
+            }
+        }
         return new WindowsInformationProtection();
     }
 
@@ -174,7 +183,7 @@ class WindowsInformationProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Gets the enforcementLevel property value. WIP enforcement level.See the Enum definition for supported values. Possible values are: noProtection, encryptAndAuditOnly, encryptAuditAndPrompt, encryptAuditAndBlock.
+     * Gets the enforcementLevel property value. Possible values for WIP Protection enforcement levels
      * @return WindowsInformationProtectionEnforcementLevel|null
     */
     public function getEnforcementLevel(): ?WindowsInformationProtectionEnforcementLevel {
@@ -442,7 +451,7 @@ class WindowsInformationProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Sets the enforcementLevel property value. WIP enforcement level.See the Enum definition for supported values. Possible values are: noProtection, encryptAndAuditOnly, encryptAuditAndPrompt, encryptAuditAndBlock.
+     * Sets the enforcementLevel property value. Possible values for WIP Protection enforcement levels
      *  @param WindowsInformationProtectionEnforcementLevel|null $value Value to set for the enforcementLevel property.
     */
     public function setEnforcementLevel(?WindowsInformationProtectionEnforcementLevel $value ): void {

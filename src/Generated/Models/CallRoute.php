@@ -25,7 +25,7 @@ class CallRoute implements AdditionalDataHolder, Parsable
     private ?IdentitySet $original = null;
     
     /**
-     * @var RoutingType|null $routingType Possible values are: forwarded, lookup, selfFork.
+     * @var RoutingType|null $routingType The routingType property
     */
     private ?RoutingType $routingType = null;
     
@@ -83,7 +83,7 @@ class CallRoute implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the routingType property value. Possible values are: forwarded, lookup, selfFork.
+     * Gets the routingType property value. The routingType property
      * @return RoutingType|null
     */
     public function getRoutingType(): ?RoutingType {
@@ -126,7 +126,7 @@ class CallRoute implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the routingType property value. Possible values are: forwarded, lookup, selfFork.
+     * Sets the routingType property value. The routingType property
      *  @param RoutingType|null $value Value to set for the routingType property.
     */
     public function setRoutingType(?RoutingType $value ): void {

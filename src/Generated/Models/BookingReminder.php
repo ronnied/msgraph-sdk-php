@@ -26,7 +26,7 @@ class BookingReminder implements AdditionalDataHolder, Parsable
     private ?DateInterval $offset = null;
     
     /**
-     * @var BookingReminderRecipients|null $recipients The persons who should receive the reminder. Possible values are: allAttendees, staff, customer and unknownFutureValue.
+     * @var BookingReminderRecipients|null $recipients The recipients property
     */
     private ?BookingReminderRecipients $recipients = null;
     
@@ -84,7 +84,7 @@ class BookingReminder implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recipients property value. The persons who should receive the reminder. Possible values are: allAttendees, staff, customer and unknownFutureValue.
+     * Gets the recipients property value. The recipients property
      * @return BookingReminderRecipients|null
     */
     public function getRecipients(): ?BookingReminderRecipients {
@@ -127,7 +127,7 @@ class BookingReminder implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the recipients property value. The persons who should receive the reminder. Possible values are: allAttendees, staff, customer and unknownFutureValue.
+     * Sets the recipients property value. The recipients property
      *  @param BookingReminderRecipients|null $value Value to set for the recipients property.
     */
     public function setRecipients(?BookingReminderRecipients $value ): void {

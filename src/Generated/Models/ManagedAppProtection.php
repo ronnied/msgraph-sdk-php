@@ -15,17 +15,17 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     private ?array $allowedDataStorageLocations = null;
     
     /**
-     * @var ManagedAppDataTransferLevel|null $allowedInboundDataTransferSources Sources from which data is allowed to be transferred. Possible values are: allApps, managedApps, none.
+     * @var ManagedAppDataTransferLevel|null $allowedInboundDataTransferSources Data can be transferred from/to these classes of apps
     */
     private ?ManagedAppDataTransferLevel $allowedInboundDataTransferSources = null;
     
     /**
-     * @var ManagedAppClipboardSharingLevel|null $allowedOutboundClipboardSharingLevel The level to which the clipboard may be shared between apps on the managed device. Possible values are: allApps, managedAppsWithPasteIn, managedApps, blocked.
+     * @var ManagedAppClipboardSharingLevel|null $allowedOutboundClipboardSharingLevel Represents the level to which the device's clipboard may be shared between apps
     */
     private ?ManagedAppClipboardSharingLevel $allowedOutboundClipboardSharingLevel = null;
     
     /**
-     * @var ManagedAppDataTransferLevel|null $allowedOutboundDataTransferDestinations Destinations to which data is allowed to be transferred. Possible values are: allApps, managedApps, none.
+     * @var ManagedAppDataTransferLevel|null $allowedOutboundDataTransferDestinations Data can be transferred from/to these classes of apps
     */
     private ?ManagedAppDataTransferLevel $allowedOutboundDataTransferDestinations = null;
     
@@ -55,7 +55,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     private ?bool $fingerprintBlocked = null;
     
     /**
-     * @var ManagedBrowserType|null $managedBrowser Indicates in which managed browser(s) that internet links should be opened. When this property is configured, ManagedBrowserToOpenLinksRequired should be true. Possible values are: notConfigured, microsoftEdge.
+     * @var ManagedBrowserType|null $managedBrowser Type of managed browser
     */
     private ?ManagedBrowserType $managedBrowser = null;
     
@@ -120,7 +120,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     private ?DateInterval $periodOnlineBeforeAccessCheck = null;
     
     /**
-     * @var ManagedAppPinCharacterSet|null $pinCharacterSet Character set which may be used for an app-level pin if PinRequired is set to True. Possible values are: numeric, alphanumericAndSymbol.
+     * @var ManagedAppPinCharacterSet|null $pinCharacterSet Character set which is to be used for a user's app PIN
     */
     private ?ManagedAppPinCharacterSet $pinCharacterSet = null;
     
@@ -149,6 +149,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.managedAppProtection';
     }
 
     /**
@@ -157,6 +158,14 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
      * @return ManagedAppProtection
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): ManagedAppProtection {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.defaultManagedAppProtection': return new DefaultManagedAppProtection();
+                case '#microsoft.graph.targetedManagedAppProtection': return new TargetedManagedAppProtection();
+            }
+        }
         return new ManagedAppProtection();
     }
 
@@ -169,7 +178,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Gets the allowedInboundDataTransferSources property value. Sources from which data is allowed to be transferred. Possible values are: allApps, managedApps, none.
+     * Gets the allowedInboundDataTransferSources property value. Data can be transferred from/to these classes of apps
      * @return ManagedAppDataTransferLevel|null
     */
     public function getAllowedInboundDataTransferSources(): ?ManagedAppDataTransferLevel {
@@ -177,7 +186,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Gets the allowedOutboundClipboardSharingLevel property value. The level to which the clipboard may be shared between apps on the managed device. Possible values are: allApps, managedAppsWithPasteIn, managedApps, blocked.
+     * Gets the allowedOutboundClipboardSharingLevel property value. Represents the level to which the device's clipboard may be shared between apps
      * @return ManagedAppClipboardSharingLevel|null
     */
     public function getAllowedOutboundClipboardSharingLevel(): ?ManagedAppClipboardSharingLevel {
@@ -185,7 +194,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Gets the allowedOutboundDataTransferDestinations property value. Destinations to which data is allowed to be transferred. Possible values are: allApps, managedApps, none.
+     * Gets the allowedOutboundDataTransferDestinations property value. Data can be transferred from/to these classes of apps
      * @return ManagedAppDataTransferLevel|null
     */
     public function getAllowedOutboundDataTransferDestinations(): ?ManagedAppDataTransferLevel {
@@ -270,7 +279,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Gets the managedBrowser property value. Indicates in which managed browser(s) that internet links should be opened. When this property is configured, ManagedBrowserToOpenLinksRequired should be true. Possible values are: notConfigured, microsoftEdge.
+     * Gets the managedBrowser property value. Type of managed browser
      * @return ManagedBrowserType|null
     */
     public function getManagedBrowser(): ?ManagedBrowserType {
@@ -374,7 +383,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Gets the pinCharacterSet property value. Character set which may be used for an app-level pin if PinRequired is set to True. Possible values are: numeric, alphanumericAndSymbol.
+     * Gets the pinCharacterSet property value. Character set which is to be used for a user's app PIN
      * @return ManagedAppPinCharacterSet|null
     */
     public function getPinCharacterSet(): ?ManagedAppPinCharacterSet {
@@ -457,7 +466,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Sets the allowedInboundDataTransferSources property value. Sources from which data is allowed to be transferred. Possible values are: allApps, managedApps, none.
+     * Sets the allowedInboundDataTransferSources property value. Data can be transferred from/to these classes of apps
      *  @param ManagedAppDataTransferLevel|null $value Value to set for the allowedInboundDataTransferSources property.
     */
     public function setAllowedInboundDataTransferSources(?ManagedAppDataTransferLevel $value ): void {
@@ -465,7 +474,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Sets the allowedOutboundClipboardSharingLevel property value. The level to which the clipboard may be shared between apps on the managed device. Possible values are: allApps, managedAppsWithPasteIn, managedApps, blocked.
+     * Sets the allowedOutboundClipboardSharingLevel property value. Represents the level to which the device's clipboard may be shared between apps
      *  @param ManagedAppClipboardSharingLevel|null $value Value to set for the allowedOutboundClipboardSharingLevel property.
     */
     public function setAllowedOutboundClipboardSharingLevel(?ManagedAppClipboardSharingLevel $value ): void {
@@ -473,7 +482,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Sets the allowedOutboundDataTransferDestinations property value. Destinations to which data is allowed to be transferred. Possible values are: allApps, managedApps, none.
+     * Sets the allowedOutboundDataTransferDestinations property value. Data can be transferred from/to these classes of apps
      *  @param ManagedAppDataTransferLevel|null $value Value to set for the allowedOutboundDataTransferDestinations property.
     */
     public function setAllowedOutboundDataTransferDestinations(?ManagedAppDataTransferLevel $value ): void {
@@ -521,7 +530,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Sets the managedBrowser property value. Indicates in which managed browser(s) that internet links should be opened. When this property is configured, ManagedBrowserToOpenLinksRequired should be true. Possible values are: notConfigured, microsoftEdge.
+     * Sets the managedBrowser property value. Type of managed browser
      *  @param ManagedBrowserType|null $value Value to set for the managedBrowser property.
     */
     public function setManagedBrowser(?ManagedBrowserType $value ): void {
@@ -625,7 +634,7 @@ class ManagedAppProtection extends ManagedAppPolicy implements Parsable
     }
 
     /**
-     * Sets the pinCharacterSet property value. Character set which may be used for an app-level pin if PinRequired is set to True. Possible values are: numeric, alphanumericAndSymbol.
+     * Sets the pinCharacterSet property value. Character set which is to be used for a user's app PIN
      *  @param ManagedAppPinCharacterSet|null $value Value to set for the pinCharacterSet property.
     */
     public function setPinCharacterSet(?ManagedAppPinCharacterSet $value ): void {

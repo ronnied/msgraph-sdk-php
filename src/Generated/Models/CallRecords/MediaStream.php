@@ -132,7 +132,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     private ?DateTime $startDateTime = null;
     
     /**
-     * @var MediaStreamDirection|null $streamDirection Indicates the direction of the media stream. Possible values are: callerToCallee, calleeToCaller.
+     * @var MediaStreamDirection|null $streamDirection The streamDirection property
     */
     private ?MediaStreamDirection $streamDirection = null;
     
@@ -397,7 +397,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the streamDirection property value. Indicates the direction of the media stream. Possible values are: callerToCallee, calleeToCaller.
+     * Gets the streamDirection property value. The streamDirection property
      * @return MediaStreamDirection|null
     */
     public function getStreamDirection(): ?MediaStreamDirection {
@@ -656,7 +656,7 @@ class MediaStream implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the streamDirection property value. Indicates the direction of the media stream. Possible values are: callerToCallee, calleeToCaller.
+     * Sets the streamDirection property value. The streamDirection property
      *  @param MediaStreamDirection|null $value Value to set for the streamDirection property.
     */
     public function setStreamDirection(?MediaStreamDirection $value ): void {

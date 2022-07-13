@@ -38,6 +38,7 @@ class DomainDnsRecord extends Entity implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.domainDnsRecord';
     }
 
     /**

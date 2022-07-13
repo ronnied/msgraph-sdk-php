@@ -20,10 +20,11 @@ class DeviceManagementTroubleshootingEvent extends Entity implements Parsable
     private ?DateTime $eventDateTime = null;
     
     /**
-     * Instantiates a new deviceManagementTroubleshootingEvent and sets the default values.
+     * Instantiates a new DeviceManagementTroubleshootingEvent and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.deviceManagementTroubleshootingEvent';
     }
 
     /**

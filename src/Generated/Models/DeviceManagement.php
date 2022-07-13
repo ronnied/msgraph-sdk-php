@@ -149,7 +149,7 @@ class DeviceManagement extends Entity implements Parsable
     private ?SoftwareUpdateStatusSummary $softwareUpdateStatusSummary = null;
     
     /**
-     * @var DeviceManagementSubscriptionState|null $subscriptionState Tenant mobile device management subscription state. Possible values are: pending, active, warning, disabled, deleted, blocked, lockedOut.
+     * @var DeviceManagementSubscriptionState|null $subscriptionState Tenant mobile device management subscription state.
     */
     private ?DeviceManagementSubscriptionState $subscriptionState = null;
     
@@ -469,7 +469,7 @@ class DeviceManagement extends Entity implements Parsable
     }
 
     /**
-     * Gets the subscriptionState property value. Tenant mobile device management subscription state. Possible values are: pending, active, warning, disabled, deleted, blocked, lockedOut.
+     * Gets the subscriptionState property value. Tenant mobile device management subscription state.
      * @return DeviceManagementSubscriptionState|null
     */
     public function getSubscriptionState(): ?DeviceManagementSubscriptionState {
@@ -792,7 +792,7 @@ class DeviceManagement extends Entity implements Parsable
     }
 
     /**
-     * Sets the subscriptionState property value. Tenant mobile device management subscription state. Possible values are: pending, active, warning, disabled, deleted, blocked, lockedOut.
+     * Sets the subscriptionState property value. Tenant mobile device management subscription state.
      *  @param DeviceManagementSubscriptionState|null $value Value to set for the subscriptionState property.
     */
     public function setSubscriptionState(?DeviceManagementSubscriptionState $value ): void {

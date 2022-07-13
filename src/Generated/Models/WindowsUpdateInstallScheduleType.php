@@ -15,10 +15,16 @@ class WindowsUpdateInstallScheduleType implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
+     * @var string|null $type The type property
+    */
+    private ?string $type = null;
+    
+    /**
      * Instantiates a new windowsUpdateInstallScheduleType and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];
+        $this->type = '#microsoft.graph.windowsUpdateInstallScheduleType';
     }
 
     /**
@@ -27,6 +33,14 @@ class WindowsUpdateInstallScheduleType implements AdditionalDataHolder, Parsable
      * @return WindowsUpdateInstallScheduleType
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): WindowsUpdateInstallScheduleType {
+        $mappingValueNode = $parseNode->getChildNode("@odata.type");
+        if ($mappingValueNode !== null) {
+            $mappingValue = $mappingValueNode->getStringValue();
+            switch ($mappingValue) {
+                case '#microsoft.graph.windowsUpdateActiveHoursInstall': return new WindowsUpdateActiveHoursInstall();
+                case '#microsoft.graph.windowsUpdateScheduledInstall': return new WindowsUpdateScheduledInstall();
+            }
+        }
         return new WindowsUpdateInstallScheduleType();
     }
 
@@ -45,7 +59,16 @@ class WindowsUpdateInstallScheduleType implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdatatype($n->getStringValue()); },
         ];
+    }
+
+    /**
+     * Gets the @odata.type property value. The type property
+     * @return string|null
+    */
+    public function getOdatatype(): ?string {
+        return $this->type;
     }
 
     /**
@@ -53,6 +76,7 @@ class WindowsUpdateInstallScheduleType implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('@odata.type', $this->type);
         $writer->writeAdditionalData($this->additionalData);
     }
 
@@ -62,6 +86,14 @@ class WindowsUpdateInstallScheduleType implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value ): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The type property
+     *  @param string|null $value Value to set for the type property.
+    */
+    public function setOdatatype(?string $value ): void {
+        $this->type = $value;
     }
 
 }

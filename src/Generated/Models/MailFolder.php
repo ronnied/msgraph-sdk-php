@@ -64,10 +64,11 @@ class MailFolder extends Entity implements Parsable
     private ?int $unreadItemCount = null;
     
     /**
-     * Instantiates a new mailFolder and sets the default values.
+     * Instantiates a new MailFolder and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.mailFolder';
     }
 
     /**

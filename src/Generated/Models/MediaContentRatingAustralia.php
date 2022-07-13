@@ -15,12 +15,12 @@ class MediaContentRatingAustralia implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var RatingAustraliaMoviesType|null $movieRating Movies rating selected for Australia. Possible values are: allAllowed, allBlocked, general, parentalGuidance, mature, agesAbove15, agesAbove18.
+     * @var RatingAustraliaMoviesType|null $movieRating Movies rating labels in Australia
     */
     private ?RatingAustraliaMoviesType $movieRating = null;
     
     /**
-     * @var RatingAustraliaTelevisionType|null $tvRating TV rating selected for Australia. Possible values are: allAllowed, allBlocked, preschoolers, children, general, parentalGuidance, mature, agesAbove15, agesAbove15AdultViolence.
+     * @var RatingAustraliaTelevisionType|null $tvRating TV content rating labels in Australia
     */
     private ?RatingAustraliaTelevisionType $tvRating = null;
     
@@ -61,7 +61,7 @@ class MediaContentRatingAustralia implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the movieRating property value. Movies rating selected for Australia. Possible values are: allAllowed, allBlocked, general, parentalGuidance, mature, agesAbove15, agesAbove18.
+     * Gets the movieRating property value. Movies rating labels in Australia
      * @return RatingAustraliaMoviesType|null
     */
     public function getMovieRating(): ?RatingAustraliaMoviesType {
@@ -69,7 +69,7 @@ class MediaContentRatingAustralia implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tvRating property value. TV rating selected for Australia. Possible values are: allAllowed, allBlocked, preschoolers, children, general, parentalGuidance, mature, agesAbove15, agesAbove15AdultViolence.
+     * Gets the tvRating property value. TV content rating labels in Australia
      * @return RatingAustraliaTelevisionType|null
     */
     public function getTvRating(): ?RatingAustraliaTelevisionType {
@@ -95,7 +95,7 @@ class MediaContentRatingAustralia implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the movieRating property value. Movies rating selected for Australia. Possible values are: allAllowed, allBlocked, general, parentalGuidance, mature, agesAbove15, agesAbove18.
+     * Sets the movieRating property value. Movies rating labels in Australia
      *  @param RatingAustraliaMoviesType|null $value Value to set for the movieRating property.
     */
     public function setMovieRating(?RatingAustraliaMoviesType $value ): void {
@@ -103,7 +103,7 @@ class MediaContentRatingAustralia implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tvRating property value. TV rating selected for Australia. Possible values are: allAllowed, allBlocked, preschoolers, children, general, parentalGuidance, mature, agesAbove15, agesAbove15AdultViolence.
+     * Sets the tvRating property value. TV content rating labels in Australia
      *  @param RatingAustraliaTelevisionType|null $value Value to set for the tvRating property.
     */
     public function setTvRating(?RatingAustraliaTelevisionType $value ): void {

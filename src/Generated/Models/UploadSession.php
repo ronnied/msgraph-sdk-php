@@ -31,7 +31,7 @@ class UploadSession implements AdditionalDataHolder, Parsable
     private ?string $uploadUrl = null;
     
     /**
-     * Instantiates a new UploadSession and sets the default values.
+     * Instantiates a new uploadSession and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];

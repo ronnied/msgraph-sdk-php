@@ -39,7 +39,7 @@ class DeviceCompliancePolicySettingStateSummary extends Entity implements Parsab
     private ?int $notApplicableDeviceCount = null;
     
     /**
-     * @var PolicyPlatformType|null $platformType Setting platform. Possible values are: android, androidForWork, iOS, macOS, windowsPhone81, windows81AndLater, windows10AndLater, androidWorkProfile, windows10XProfile, androidAOSP, all.
+     * @var PolicyPlatformType|null $platformType Supported platform types for policies.
     */
     private ?PolicyPlatformType $platformType = null;
     
@@ -149,7 +149,7 @@ class DeviceCompliancePolicySettingStateSummary extends Entity implements Parsab
     }
 
     /**
-     * Gets the platformType property value. Setting platform. Possible values are: android, androidForWork, iOS, macOS, windowsPhone81, windows81AndLater, windows10AndLater, androidWorkProfile, windows10XProfile, androidAOSP, all.
+     * Gets the platformType property value. Supported platform types for policies.
      * @return PolicyPlatformType|null
     */
     public function getPlatformType(): ?PolicyPlatformType {
@@ -256,7 +256,7 @@ class DeviceCompliancePolicySettingStateSummary extends Entity implements Parsab
     }
 
     /**
-     * Sets the platformType property value. Setting platform. Possible values are: android, androidForWork, iOS, macOS, windowsPhone81, windows81AndLater, windows10AndLater, androidWorkProfile, windows10XProfile, androidAOSP, all.
+     * Sets the platformType property value. Supported platform types for policies.
      *  @param PolicyPlatformType|null $value Value to set for the platformType property.
     */
     public function setPlatformType(?PolicyPlatformType $value ): void {

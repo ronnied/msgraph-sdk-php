@@ -15,12 +15,12 @@ class MediaContentRatingIreland implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var RatingIrelandMoviesType|null $movieRating Movies rating selected for Ireland. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove12, agesAbove15, agesAbove16, adults.
+     * @var RatingIrelandMoviesType|null $movieRating Movies rating labels in Ireland
     */
     private ?RatingIrelandMoviesType $movieRating = null;
     
     /**
-     * @var RatingIrelandTelevisionType|null $tvRating TV rating selected for Ireland. Possible values are: allAllowed, allBlocked, general, children, youngAdults, parentalSupervision, mature.
+     * @var RatingIrelandTelevisionType|null $tvRating TV content rating labels in Ireland
     */
     private ?RatingIrelandTelevisionType $tvRating = null;
     
@@ -61,7 +61,7 @@ class MediaContentRatingIreland implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the movieRating property value. Movies rating selected for Ireland. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove12, agesAbove15, agesAbove16, adults.
+     * Gets the movieRating property value. Movies rating labels in Ireland
      * @return RatingIrelandMoviesType|null
     */
     public function getMovieRating(): ?RatingIrelandMoviesType {
@@ -69,7 +69,7 @@ class MediaContentRatingIreland implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tvRating property value. TV rating selected for Ireland. Possible values are: allAllowed, allBlocked, general, children, youngAdults, parentalSupervision, mature.
+     * Gets the tvRating property value. TV content rating labels in Ireland
      * @return RatingIrelandTelevisionType|null
     */
     public function getTvRating(): ?RatingIrelandTelevisionType {
@@ -95,7 +95,7 @@ class MediaContentRatingIreland implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the movieRating property value. Movies rating selected for Ireland. Possible values are: allAllowed, allBlocked, general, parentalGuidance, agesAbove12, agesAbove15, agesAbove16, adults.
+     * Sets the movieRating property value. Movies rating labels in Ireland
      *  @param RatingIrelandMoviesType|null $value Value to set for the movieRating property.
     */
     public function setMovieRating(?RatingIrelandMoviesType $value ): void {
@@ -103,7 +103,7 @@ class MediaContentRatingIreland implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tvRating property value. TV rating selected for Ireland. Possible values are: allAllowed, allBlocked, general, children, youngAdults, parentalSupervision, mature.
+     * Sets the tvRating property value. TV content rating labels in Ireland
      *  @param RatingIrelandTelevisionType|null $value Value to set for the tvRating property.
     */
     public function setTvRating(?RatingIrelandTelevisionType $value ): void {

@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class SharedPCAccountManagerPolicy implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var SharedPCAccountDeletionPolicyType|null $accountDeletionPolicy Configures when accounts are deleted. Possible values are: immediate, diskSpaceThreshold, diskSpaceThresholdOrInactiveThreshold.
+     * @var SharedPCAccountDeletionPolicyType|null $accountDeletionPolicy Possible values for when accounts are deleted on a shared PC.
     */
     private ?SharedPCAccountDeletionPolicyType $accountDeletionPolicy = null;
     
@@ -51,7 +51,7 @@ class SharedPCAccountManagerPolicy implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the accountDeletionPolicy property value. Configures when accounts are deleted. Possible values are: immediate, diskSpaceThreshold, diskSpaceThresholdOrInactiveThreshold.
+     * Gets the accountDeletionPolicy property value. Possible values for when accounts are deleted on a shared PC.
      * @return SharedPCAccountDeletionPolicyType|null
     */
     public function getAccountDeletionPolicy(): ?SharedPCAccountDeletionPolicyType {
@@ -117,7 +117,7 @@ class SharedPCAccountManagerPolicy implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the accountDeletionPolicy property value. Configures when accounts are deleted. Possible values are: immediate, diskSpaceThreshold, diskSpaceThresholdOrInactiveThreshold.
+     * Sets the accountDeletionPolicy property value. Possible values for when accounts are deleted on a shared PC.
      *  @param SharedPCAccountDeletionPolicyType|null $value Value to set for the accountDeletionPolicy property.
     */
     public function setAccountDeletionPolicy(?SharedPCAccountDeletionPolicyType $value ): void {

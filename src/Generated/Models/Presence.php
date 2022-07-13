@@ -19,7 +19,7 @@ class Presence extends Entity implements Parsable
     private ?string $availability = null;
     
     /**
-     * Instantiates a new presence and sets the default values.
+     * Instantiates a new Presence and sets the default values.
     */
     public function __construct() {
         parent::__construct();

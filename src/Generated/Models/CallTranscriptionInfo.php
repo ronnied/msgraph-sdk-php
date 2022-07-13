@@ -21,7 +21,7 @@ class CallTranscriptionInfo implements AdditionalDataHolder, Parsable
     private ?DateTime $lastModifiedDateTime = null;
     
     /**
-     * @var CallTranscriptionState|null $state Possible values are: notStarted, active, inactive.
+     * @var CallTranscriptionState|null $state The state property
     */
     private ?CallTranscriptionState $state = null;
     
@@ -70,7 +70,7 @@ class CallTranscriptionInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. Possible values are: notStarted, active, inactive.
+     * Gets the state property value. The state property
      * @return CallTranscriptionState|null
     */
     public function getState(): ?CallTranscriptionState {
@@ -104,7 +104,7 @@ class CallTranscriptionInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. Possible values are: notStarted, active, inactive.
+     * Sets the state property value. The state property
      *  @param CallTranscriptionState|null $value Value to set for the state property.
     */
     public function setState(?CallTranscriptionState $value ): void {

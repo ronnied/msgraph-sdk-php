@@ -24,11 +24,6 @@ class RichLongRunningOperation extends LongRunningOperation implements Parsable
     private ?string $resourceId = null;
     
     /**
-     * @var string|null $type Type of the operation.
-    */
-    private ?string $type = null;
-    
-    /**
      * Instantiates a new RichLongRunningOperation and sets the default values.
     */
     public function __construct() {
@@ -62,7 +57,6 @@ class RichLongRunningOperation extends LongRunningOperation implements Parsable
             'error' => function (ParseNode $n) use ($o) { $o->setError($n->getObjectValue(array(PublicError::class, 'createFromDiscriminatorValue'))); },
             'percentageComplete' => function (ParseNode $n) use ($o) { $o->setPercentageComplete($n->getIntegerValue()); },
             'resourceId' => function (ParseNode $n) use ($o) { $o->setResourceId($n->getStringValue()); },
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getStringValue()); },
         ]);
     }
 
@@ -83,14 +77,6 @@ class RichLongRunningOperation extends LongRunningOperation implements Parsable
     }
 
     /**
-     * Gets the type property value. Type of the operation.
-     * @return string|null
-    */
-    public function getType(): ?string {
-        return $this->type;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -99,7 +85,6 @@ class RichLongRunningOperation extends LongRunningOperation implements Parsable
         $writer->writeObjectValue('error', $this->error);
         $writer->writeIntegerValue('percentageComplete', $this->percentageComplete);
         $writer->writeStringValue('resourceId', $this->resourceId);
-        $writer->writeStringValue('type', $this->type);
     }
 
     /**
@@ -124,14 +109,6 @@ class RichLongRunningOperation extends LongRunningOperation implements Parsable
     */
     public function setResourceId(?string $value ): void {
         $this->resourceId = $value;
-    }
-
-    /**
-     * Sets the type property value. Type of the operation.
-     *  @param string|null $value Value to set for the type property.
-    */
-    public function setType(?string $value ): void {
-        $this->type = $value;
     }
 
 }

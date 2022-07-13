@@ -84,7 +84,7 @@ class Windows10CompliancePolicy extends DeviceCompliancePolicy implements Parsab
     private ?bool $passwordRequiredToUnlockFromIdle = null;
     
     /**
-     * @var RequiredPasswordType|null $passwordRequiredType The required password type. Possible values are: deviceDefault, alphanumeric, numeric.
+     * @var RequiredPasswordType|null $passwordRequiredType Possible values of required passwords.
     */
     private ?RequiredPasswordType $passwordRequiredType = null;
     
@@ -269,7 +269,7 @@ class Windows10CompliancePolicy extends DeviceCompliancePolicy implements Parsab
     }
 
     /**
-     * Gets the passwordRequiredType property value. The required password type. Possible values are: deviceDefault, alphanumeric, numeric.
+     * Gets the passwordRequiredType property value. Possible values of required passwords.
      * @return RequiredPasswordType|null
     */
     public function getPasswordRequiredType(): ?RequiredPasswordType {
@@ -448,7 +448,7 @@ class Windows10CompliancePolicy extends DeviceCompliancePolicy implements Parsab
     }
 
     /**
-     * Sets the passwordRequiredType property value. The required password type. Possible values are: deviceDefault, alphanumeric, numeric.
+     * Sets the passwordRequiredType property value. Possible values of required passwords.
      *  @param RequiredPasswordType|null $value Value to set for the passwordRequiredType property.
     */
     public function setPasswordRequiredType(?RequiredPasswordType $value ): void {

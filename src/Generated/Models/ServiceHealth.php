@@ -19,7 +19,7 @@ class ServiceHealth extends Entity implements Parsable
     private ?string $service = null;
     
     /**
-     * @var ServiceHealthStatus|null $status Show the overall service health status. Possible values are: serviceOperational, investigating, restoringService, verifyingService, serviceRestored, postIncidentReviewPublished, serviceDegradation, serviceInterruption, extendedRecovery, falsePositive, investigationSuspended, resolved, mitigatedExternal, mitigated, resolvedExternal, confirmed, reported, unknownFutureValue. For more details, see serviceHealthStatus values.
+     * @var ServiceHealthStatus|null $status The status property
     */
     private ?ServiceHealthStatus $status = null;
     
@@ -69,7 +69,7 @@ class ServiceHealth extends Entity implements Parsable
     }
 
     /**
-     * Gets the status property value. Show the overall service health status. Possible values are: serviceOperational, investigating, restoringService, verifyingService, serviceRestored, postIncidentReviewPublished, serviceDegradation, serviceInterruption, extendedRecovery, falsePositive, investigationSuspended, resolved, mitigatedExternal, mitigated, resolvedExternal, confirmed, reported, unknownFutureValue. For more details, see serviceHealthStatus values.
+     * Gets the status property value. The status property
      * @return ServiceHealthStatus|null
     */
     public function getStatus(): ?ServiceHealthStatus {
@@ -104,7 +104,7 @@ class ServiceHealth extends Entity implements Parsable
     }
 
     /**
-     * Sets the status property value. Show the overall service health status. Possible values are: serviceOperational, investigating, restoringService, verifyingService, serviceRestored, postIncidentReviewPublished, serviceDegradation, serviceInterruption, extendedRecovery, falsePositive, investigationSuspended, resolved, mitigatedExternal, mitigated, resolvedExternal, confirmed, reported, unknownFutureValue. For more details, see serviceHealthStatus values.
+     * Sets the status property value. The status property
      *  @param ServiceHealthStatus|null $value Value to set for the status property.
     */
     public function setStatus(?ServiceHealthStatus $value ): void {

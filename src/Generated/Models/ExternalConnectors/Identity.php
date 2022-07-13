@@ -10,11 +10,6 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class Identity extends Entity implements Parsable 
 {
     /**
-     * @var IdentityType|null $type The type of identity. Possible values are: user or group for Azure AD identities and externalgroup for groups in an external system.
-    */
-    private ?IdentityType $type = null;
-    
-    /**
      * Instantiates a new identity and sets the default values.
     */
     public function __construct() {
@@ -37,16 +32,7 @@ class Identity extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'type' => function (ParseNode $n) use ($o) { $o->setType($n->getEnumValue(IdentityType::class)); },
         ]);
-    }
-
-    /**
-     * Gets the type property value. The type of identity. Possible values are: user or group for Azure AD identities and externalgroup for groups in an external system.
-     * @return IdentityType|null
-    */
-    public function getType(): ?IdentityType {
-        return $this->type;
     }
 
     /**
@@ -55,15 +41,6 @@ class Identity extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeEnumValue('type', $this->type);
-    }
-
-    /**
-     * Sets the type property value. The type of identity. Possible values are: user or group for Azure AD identities and externalgroup for groups in an external system.
-     *  @param IdentityType|null $value Value to set for the type property.
-    */
-    public function setType(?IdentityType $value ): void {
-        $this->type = $value;
     }
 
 }

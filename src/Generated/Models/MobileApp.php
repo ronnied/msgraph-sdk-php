@@ -80,7 +80,7 @@ class MobileApp extends Entity implements Parsable
     private ?string $publisher = null;
     
     /**
-     * @var MobileAppPublishingState|null $publishingState The publishing state for the app. The app cannot be assigned unless the app is published. Possible values are: notPublished, processing, published.
+     * @var MobileAppPublishingState|null $publishingState Indicates the publishing state of an app.
     */
     private ?MobileAppPublishingState $publishingState = null;
     
@@ -89,6 +89,7 @@ class MobileApp extends Entity implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->type = '#microsoft.graph.mobileApp';
     }
 
     /**
@@ -252,7 +253,7 @@ class MobileApp extends Entity implements Parsable
     }
 
     /**
-     * Gets the publishingState property value. The publishing state for the app. The app cannot be assigned unless the app is published. Possible values are: notPublished, processing, published.
+     * Gets the publishingState property value. Indicates the publishing state of an app.
      * @return MobileAppPublishingState|null
     */
     public function getPublishingState(): ?MobileAppPublishingState {
@@ -395,7 +396,7 @@ class MobileApp extends Entity implements Parsable
     }
 
     /**
-     * Sets the publishingState property value. The publishing state for the app. The app cannot be assigned unless the app is published. Possible values are: notPublished, processing, published.
+     * Sets the publishingState property value. Indicates the publishing state of an app.
      *  @param MobileAppPublishingState|null $value Value to set for the publishingState property.
     */
     public function setPublishingState(?MobileAppPublishingState $value ): void {
