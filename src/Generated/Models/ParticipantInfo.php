@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class ParticipantInfo implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
     private array $additionalData;
     
@@ -35,6 +35,11 @@ class ParticipantInfo implements AdditionalDataHolder, Parsable
     private ?string $languageId = null;
     
     /**
+     * @var string|null $odataType The OdataType property
+    */
+    private ?string $odataType = null;
+    
+    /**
      * @var string|null $participantId The participant ID of the participant. Read-only.
     */
     private ?string $participantId = null;
@@ -48,7 +53,8 @@ class ParticipantInfo implements AdditionalDataHolder, Parsable
      * Instantiates a new participantInfo and sets the default values.
     */
     public function __construct() {
-        $this->additionalData = [];
+        $this->setAdditionalData([]);
+        $this->setOdataType('#microsoft.graph.participantInfo');
     }
 
     /**
@@ -95,6 +101,7 @@ class ParticipantInfo implements AdditionalDataHolder, Parsable
             'endpointType' => function (ParseNode $n) use ($o) { $o->setEndpointType($n->getEnumValue(EndpointType::class)); },
             'identity' => function (ParseNode $n) use ($o) { $o->setIdentity($n->getObjectValue(array(IdentitySet::class, 'createFromDiscriminatorValue'))); },
             'languageId' => function (ParseNode $n) use ($o) { $o->setLanguageId($n->getStringValue()); },
+            '@odata.type' => function (ParseNode $n) use ($o) { $o->setOdataType($n->getStringValue()); },
             'participantId' => function (ParseNode $n) use ($o) { $o->setParticipantId($n->getStringValue()); },
             'region' => function (ParseNode $n) use ($o) { $o->setRegion($n->getStringValue()); },
         ];
@@ -114,6 +121,14 @@ class ParticipantInfo implements AdditionalDataHolder, Parsable
     */
     public function getLanguageId(): ?string {
         return $this->languageId;
+    }
+
+    /**
+     * Gets the @odata.type property value. The OdataType property
+     * @return string|null
+    */
+    public function getOdataType(): ?string {
+        return $this->odataType;
     }
 
     /**
@@ -141,6 +156,7 @@ class ParticipantInfo implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('endpointType', $this->endpointType);
         $writer->writeObjectValue('identity', $this->identity);
         $writer->writeStringValue('languageId', $this->languageId);
+        $writer->writeStringValue('@odata.type', $this->odataType);
         $writer->writeStringValue('participantId', $this->participantId);
         $writer->writeStringValue('region', $this->region);
         $writer->writeAdditionalData($this->additionalData);
@@ -184,6 +200,14 @@ class ParticipantInfo implements AdditionalDataHolder, Parsable
     */
     public function setLanguageId(?string $value ): void {
         $this->languageId = $value;
+    }
+
+    /**
+     * Sets the @odata.type property value. The OdataType property
+     *  @param string|null $value Value to set for the OdataType property.
+    */
+    public function setOdataType(?string $value ): void {
+        $this->odataType = $value;
     }
 
     /**

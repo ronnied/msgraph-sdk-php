@@ -71,6 +71,11 @@ class Application extends DirectoryObject implements Parsable
     private ?array $extensionProperties = null;
     
     /**
+     * @var array<FederatedIdentityCredential>|null $federatedIdentityCredentials Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+    */
+    private ?array $federatedIdentityCredentials = null;
+    
+    /**
      * @var string|null $groupMembershipClaims Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
     */
     private ?string $groupMembershipClaims = null;
@@ -156,6 +161,11 @@ class Application extends DirectoryObject implements Parsable
     private ?array $requiredResourceAccess = null;
     
     /**
+     * @var string|null $samlMetadataUrl The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
+    */
+    private ?string $samlMetadataUrl = null;
+    
+    /**
      * @var string|null $serviceManagementReference References application or service contact information from a Service or Asset Management database. Nullable.
     */
     private ?string $serviceManagementReference = null;
@@ -205,6 +215,7 @@ class Application extends DirectoryObject implements Parsable
     */
     public function __construct() {
         parent::__construct();
+        $this->setOdataType('#microsoft.graph.application');
     }
 
     /**
@@ -313,6 +324,14 @@ class Application extends DirectoryObject implements Parsable
     }
 
     /**
+     * Gets the federatedIdentityCredentials property value. Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+     * @return array<FederatedIdentityCredential>|null
+    */
+    public function getFederatedIdentityCredentials(): ?array {
+        return $this->federatedIdentityCredentials;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable>
     */
@@ -331,6 +350,7 @@ class Application extends DirectoryObject implements Parsable
             'disabledByMicrosoftStatus' => function (ParseNode $n) use ($o) { $o->setDisabledByMicrosoftStatus($n->getStringValue()); },
             'displayName' => function (ParseNode $n) use ($o) { $o->setDisplayName($n->getStringValue()); },
             'extensionProperties' => function (ParseNode $n) use ($o) { $o->setExtensionProperties($n->getCollectionOfObjectValues(array(ExtensionProperty::class, 'createFromDiscriminatorValue'))); },
+            'federatedIdentityCredentials' => function (ParseNode $n) use ($o) { $o->setFederatedIdentityCredentials($n->getCollectionOfObjectValues(array(FederatedIdentityCredential::class, 'createFromDiscriminatorValue'))); },
             'groupMembershipClaims' => function (ParseNode $n) use ($o) { $o->setGroupMembershipClaims($n->getStringValue()); },
             'homeRealmDiscoveryPolicies' => function (ParseNode $n) use ($o) { $o->setHomeRealmDiscoveryPolicies($n->getCollectionOfObjectValues(array(HomeRealmDiscoveryPolicy::class, 'createFromDiscriminatorValue'))); },
             'identifierUris' => function (ParseNode $n) use ($o) { $o->setIdentifierUris($n->getCollectionOfPrimitiveValues()); },
@@ -348,6 +368,7 @@ class Application extends DirectoryObject implements Parsable
             'publicClient' => function (ParseNode $n) use ($o) { $o->setPublicClient($n->getObjectValue(array(PublicClientApplication::class, 'createFromDiscriminatorValue'))); },
             'publisherDomain' => function (ParseNode $n) use ($o) { $o->setPublisherDomain($n->getStringValue()); },
             'requiredResourceAccess' => function (ParseNode $n) use ($o) { $o->setRequiredResourceAccess($n->getCollectionOfObjectValues(array(RequiredResourceAccess::class, 'createFromDiscriminatorValue'))); },
+            'samlMetadataUrl' => function (ParseNode $n) use ($o) { $o->setSamlMetadataUrl($n->getStringValue()); },
             'serviceManagementReference' => function (ParseNode $n) use ($o) { $o->setServiceManagementReference($n->getStringValue()); },
             'signInAudience' => function (ParseNode $n) use ($o) { $o->setSignInAudience($n->getStringValue()); },
             'spa' => function (ParseNode $n) use ($o) { $o->setSpa($n->getObjectValue(array(SpaApplication::class, 'createFromDiscriminatorValue'))); },
@@ -497,6 +518,14 @@ class Application extends DirectoryObject implements Parsable
     }
 
     /**
+     * Gets the samlMetadataUrl property value. The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
+     * @return string|null
+    */
+    public function getSamlMetadataUrl(): ?string {
+        return $this->samlMetadataUrl;
+    }
+
+    /**
      * Gets the serviceManagementReference property value. References application or service contact information from a Service or Asset Management database. Nullable.
      * @return string|null
     */
@@ -586,6 +615,7 @@ class Application extends DirectoryObject implements Parsable
         $writer->writeStringValue('disabledByMicrosoftStatus', $this->disabledByMicrosoftStatus);
         $writer->writeStringValue('displayName', $this->displayName);
         $writer->writeCollectionOfObjectValues('extensionProperties', $this->extensionProperties);
+        $writer->writeCollectionOfObjectValues('federatedIdentityCredentials', $this->federatedIdentityCredentials);
         $writer->writeStringValue('groupMembershipClaims', $this->groupMembershipClaims);
         $writer->writeCollectionOfObjectValues('homeRealmDiscoveryPolicies', $this->homeRealmDiscoveryPolicies);
         $writer->writeCollectionOfPrimitiveValues('identifierUris', $this->identifierUris);
@@ -603,6 +633,7 @@ class Application extends DirectoryObject implements Parsable
         $writer->writeObjectValue('publicClient', $this->publicClient);
         $writer->writeStringValue('publisherDomain', $this->publisherDomain);
         $writer->writeCollectionOfObjectValues('requiredResourceAccess', $this->requiredResourceAccess);
+        $writer->writeStringValue('samlMetadataUrl', $this->samlMetadataUrl);
         $writer->writeStringValue('serviceManagementReference', $this->serviceManagementReference);
         $writer->writeStringValue('signInAudience', $this->signInAudience);
         $writer->writeObjectValue('spa', $this->spa);
@@ -708,6 +739,14 @@ class Application extends DirectoryObject implements Parsable
     */
     public function setExtensionProperties(?array $value ): void {
         $this->extensionProperties = $value;
+    }
+
+    /**
+     * Sets the federatedIdentityCredentials property value. Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+     *  @param array<FederatedIdentityCredential>|null $value Value to set for the federatedIdentityCredentials property.
+    */
+    public function setFederatedIdentityCredentials(?array $value ): void {
+        $this->federatedIdentityCredentials = $value;
     }
 
     /**
@@ -844,6 +883,14 @@ class Application extends DirectoryObject implements Parsable
     */
     public function setRequiredResourceAccess(?array $value ): void {
         $this->requiredResourceAccess = $value;
+    }
+
+    /**
+     * Sets the samlMetadataUrl property value. The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
+     *  @param string|null $value Value to set for the samlMetadataUrl property.
+    */
+    public function setSamlMetadataUrl(?string $value ): void {
+        $this->samlMetadataUrl = $value;
     }
 
     /**
