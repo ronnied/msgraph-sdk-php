@@ -488,7 +488,8 @@ class GraphRequest
             'Host' => $this->baseUrl,
             'Content-Type' => 'application/json',
             'SdkVersion' => 'Graph-php-' . GraphConstants::SDK_VERSION,
-            'Authorization' => 'Bearer ' . $this->accessToken
+	    'Authorization' => 'Bearer ' . $this->accessToken,
+	    'consistencylevel' => 'eventual',
         ];
     }
 
